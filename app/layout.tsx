@@ -1,4 +1,13 @@
 import type { Metadata, Viewport } from "next";
+import { Inter } from "next/font/google";
+import "./globals.scss";
+import Navbar from "@/components/layout/nav/Navbar";
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
+});
 
 export const viewport: Viewport = {
   themeColor: "#ffffff",
@@ -64,8 +73,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body>{children}</body>
+    <html lang="en" className={inter.variable}>
+      <body className={inter.className}>
+        <Navbar/>
+        {children}
+        </body>
     </html>
   );
 }

@@ -1,0 +1,198 @@
+// HomeHero.module.scss
+
+.heroSection {
+  position: relative;
+  width: 100%;
+  min-height: 590px;
+  height: 78vh;
+  max-height: 710px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background-color: #0c0a08;
+
+  @media (max-width: 768px) {
+    min-height: 520px;
+    height: auto;
+  }
+}
+
+.swiper,
+.staticHero {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: inherit;
+  display: flex;
+  align-items: center;
+}
+
+.slide {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: inherit;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  transform: translateZ(0);
+  will-change: opacity;
+}
+
+// Background Image Container
+.imageContainer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.bgImage {
+  object-fit: cover;
+  object-position: center 30%;
+  transform: scale(1.02);
+  transition: transform 6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+:global(.swiper-slide-active) .bgImage {
+  transform: scale(1.06);
+}
+
+// Natural Vignette Overlay - dark left for text contrast, translucent right for image beauty
+.overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    90deg,
+    rgba(10, 8, 7, 0.9) 0%,
+    rgba(10, 8, 7, 0.76) 52%,
+    rgba(10, 8, 7, 0.3) 80%,
+    rgba(10, 8, 7, 0.38) 100%
+  );
+
+  @media (max-width: 768px) {
+    background: linear-gradient(
+      180deg,
+      rgba(10, 8, 7, 0.88) 0%,
+      rgba(10, 8, 7, 0.72) 55%,
+      rgba(10, 8, 7, 0.9) 100%
+    );
+  }
+}
+
+// Left Aligned Content
+.content {
+  position: relative;
+  z-index: 2;
+  max-width: 1050px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  padding: 3.5rem 0;
+}
+
+// Slide Number & Brand
+.meta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin-bottom: 0.85rem;
+}
+
+.slideNumber {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--secondaryColor);
+  text-transform: uppercase;
+}
+
+.slash {
+  opacity: 0.5;
+  font-weight: 400;
+}
+
+.brandSeparator {
+  color: rgba(255, 255, 255, 0.35);
+  font-size: 0.65rem;
+}
+
+.brandName {
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+// Eyebrow Label
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.95);
+  background-color: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 0.32rem 0.85rem;
+  border-radius: 999px;
+  margin-bottom: 1.15rem;
+}
+
+.sparkleIcon {
+  color: var(--secondaryColor);
+}
+
+// Main Title H1 - exactly 2 lines
+.title {
+  width: 100%;
+  max-width: 1000px;
+  font-size: clamp(2.4rem, 4.3vw, 3.65rem);
+  font-weight: 800;
+  line-height: 1.14;
+  letter-spacing: -0.025em;
+  color: #ffffff;
+  margin-bottom: 1.25rem;
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+}
+
+.titleLine {
+  display: block;
+  white-space: nowrap;
+
+  @media (max-width: 900px) {
+    white-space: normal;
+  }
+}
+
+// Description - strictly 2 lines max
+.description {
+  font-size: clamp(0.95rem, 1.15vw, 1.05rem);
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.82);
+  margin-bottom: 2rem;
+  max-width: 540px;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.4);
+}
+
+// Button Group
+.btnGroup {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+
+  @media (max-width: 480px) {
+    flex-direction: column;
+    width: 100%;
+    align-items: stretch;
+  }
+}

@@ -1,1 +1,200 @@
+.navbar {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  transition: all 0.3s ease;
+}
 
+.navbarWrapper {
+  margin: 0 auto;
+  height: 75px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+// Left Side: Logo
+.logoCol {
+  display: flex;
+  align-items: center;
+}
+
+.logoLink {
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+}
+
+.logoText {
+  font-size: 1.45rem;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  color: var(--textColor);
+  transition: color 0.25s ease;
+}
+
+.logoAccent {
+  color: var(--primaryColor);
+  font-weight: 700;
+  margin: 0 0.15rem;
+}
+
+// Center: Navigation Links
+.navCol {
+  display: none;
+
+  @media (min-width: 992px) {
+    display: flex;
+    align-items: center;
+  }
+}
+
+.navList {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 2.25rem;
+  margin: 0;
+  padding: 0;
+}
+
+.navItem {
+  position: relative;
+}
+
+.navLink {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: var(--textColor);
+  text-decoration: none;
+  padding: 0.5rem 0;
+  transition: color 0.25s ease;
+
+  &:hover {
+    color: var(--primaryColor);
+  }
+
+  &.active {
+    color: var(--primaryColor);
+    font-weight: 600;
+  }
+}
+
+.activeLine {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: var(--primaryColor);
+  border-radius: 999px;
+  animation: slideIn 0.25s ease;
+}
+
+@keyframes slideIn {
+  from {
+    transform: scaleX(0);
+    opacity: 0;
+  }
+  to {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
+
+// Right Side: Actions
+.actionsCol {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+// Contact Button
+.contactBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: rgba(var(--primaryColorRgb), 0.08);
+  color: var(--primaryColor);
+  border: 1px solid rgba(var(--primaryColorRgb), 0.2);
+  text-decoration: none;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+
+  &:hover {
+    background-color: var(--primaryColor);
+    border-color: var(--primaryColor);
+    color: #ffffff;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(var(--primaryColorRgb), 0.3);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+.contactIcon {
+  transition: transform 0.2s ease;
+}
+
+// Toggle Menu Button (2 span tags)
+.toggleBtn {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 6px;
+  width: 42px;
+  height: 42px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: transform 0.2s ease;
+
+  &:hover {
+    .toggleSpan1 {
+      background-color: var(--primaryColor);
+      width: 26px;
+    }
+    .toggleSpan2 {
+      width: 26px;
+    }
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+}
+
+// First Span width
+.toggleSpan1 {
+  display: block;
+  width: 26px;
+  height: 2px;
+  background-color: var(--textColor);
+  border-radius: 4px;
+  transition: all 0.25s ease;
+}
+
+// Second Span width
+.toggleSpan2 {
+  display: block;
+  width: 18px;
+  height: 2px;
+  background-color: var(--primaryColor);
+  border-radius: 4px;
+  transition: all 0.25s ease;
+}
