@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, EffectFade } from "swiper/modules";
 import { ArrowRight, ArrowUpRight, Sparkles } from "lucide-react";
@@ -11,6 +12,13 @@ import "swiper/css";
 import "swiper/css/effect-fade";
 
 import styles from "./HomeHero.module.scss";
+
+interface FeatureCard {
+  title: string;
+  info: string;
+  image: string;
+  href: string;
+}
 
 interface HeroSlide {
   id: string;
@@ -31,6 +39,7 @@ interface HeroSlide {
   };
   image: string;
   imageAlt: string;
+  card: FeatureCard;
 }
 
 const slides: HeroSlide[] = [
@@ -54,6 +63,12 @@ const slides: HeroSlide[] = [
     },
     image: "/images/banner/banner-1.webp",
     imageAlt: "Sacred Rudraksha mala prayer beads for yoga and meditation",
+    card: {
+      title: "Rudraksha Mala",
+      info: "Certified Authentic • ₹1,299",
+      image: "/images/banner/banner-1.webp",
+      href: "/shop",
+    },
   },
   {
     id: "workshops",
@@ -75,6 +90,12 @@ const slides: HeroSlide[] = [
     },
     image: "/images/banner/banner-2.webp",
     imageAlt: "Yogify yoga workshops and courses banner",
+    card: {
+      title: "Vinyasa & Prana Flow",
+      info: "Interactive Live • 90 Mins",
+      image: "/images/banner/banner-2.webp",
+      href: "/workshops",
+    },
   },
 ];
 
@@ -89,7 +110,6 @@ export default function HomeHero() {
 
   return (
     <section className={styles.heroSection} aria-label="Home Hero Banner">
-
       {mounted ? (
         <Swiper
           modules={[Autoplay, EffectFade]}
@@ -120,58 +140,90 @@ export default function HomeHero() {
               {/* Dark Ambient Overlay */}
               <div className={styles.overlay} />
 
-              {/* Left Aligned Content */}
+              {/* Container for content and right-side vertical cards */}
               <div className="container">
-                <div className={styles.content}>
-                  {/* Number & Brand */}
-                  <div className={styles.meta}>
-                    <span className={styles.slideNumber}>
-                      {slide.slideNumber}{" "}
-                      <span className={styles.slash}>/</span>{" "}
-                      {slide.totalSlides}
-                    </span>
-                    <span className={styles.brandSeparator}>•</span>
-                    <span className={styles.brandName}>{slide.brand}</span>
+                <div className={styles.heroRow}>
+                  {/* Left Column: Heading, description, CTAs */}
+                  <div className={styles.content}>
+                    {/* Number & Brand */}
+                    <div className={styles.meta}>
+                      <span className={styles.slideNumber}>
+                        {slide.slideNumber}{" "}
+                        <span className={styles.slash}>/</span>{" "}
+                        {slide.totalSlides}
+                      </span>
+                      <span className={styles.brandSeparator}>•</span>
+                      <span className={styles.brandName}>{slide.brand}</span>
+                    </div>
+
+                    {/* Eyebrow Label */}
+                    <div className={styles.eyebrow}>
+                      <Sparkles size={13} className={styles.sparkleIcon} />
+                      <span>{slide.eyebrow}</span>
+                    </div>
+
+                    {/* Title */}
+                    <h1 className={styles.title}>
+                      <span className={styles.titleLine}>
+                        {slide.titleLine1}
+                      </span>
+                      <span className={styles.titleLine}>
+                        {slide.titleLine2}
+                      </span>
+                    </h1>
+
+                    {/* Description */}
+                    <p className={styles.description}>{slide.description}</p>
+
+                    {/* Buttons */}
+                    <div className={styles.btnGroup}>
+                      <Button
+                        variant="primary"
+                        size="md"
+                        href={slide.primaryBtn.href}
+                        icon={<ArrowRight size={16} />}
+                      >
+                        {slide.primaryBtn.label}
+                      </Button>
+
+                      <Button
+                        variant="outline"
+                        size="md"
+                        href={slide.secondaryBtn.href}
+                        icon={<ArrowUpRight size={16} />}
+                      >
+                        {slide.secondaryBtn.label}
+                      </Button>
+                    </div>
                   </div>
 
-                  {/* Eyebrow Label */}
-                  <div className={styles.eyebrow}>
-                    <Sparkles size={13} className={styles.sparkleIcon} />
-                    <span>{slide.eyebrow}</span>
-                  </div>
-
-                  {/* Title - 2 balanced lines */}
-                  <h1 className={styles.title}>
-                    <span className={styles.titleLine}>
-                      {slide.titleLine1}
-                    </span>
-                    <span className={styles.titleLine}>
-                      {slide.titleLine2}
-                    </span>
-                  </h1>
-
-                  {/* Description - 2 lines max */}
-                  <p className={styles.description}>{slide.description}</p>
-
-                  {/* Buttons */}
-                  <div className={styles.btnGroup}>
-                    <Button
-                      variant="primary"
-                      size="md"
-                      href={slide.primaryBtn.href}
-                      icon={<ArrowRight size={16} />}
+                  {/* Right Column: Single Featured Card matching reference design */}
+                  <div className={styles.featureCardsCol}>
+                    <Link
+                      href={slide.card.href}
+                      className={styles.featureCard}
                     >
-                      {slide.primaryBtn.label}
-                    </Button>
+                      <div className={styles.cardThumb}>
+                        <Image
+                          src={slide.card.image}
+                          alt={slide.card.title}
+                          fill
+                          sizes="(max-width: 1200px) 340px, 380px"
+                          className={styles.cardThumbImg}
+                        />
+                      </div>
 
-                    <Button
-                      variant="outline"
-                      size="md"
-                      href={slide.secondaryBtn.href}
-                      icon={<ArrowUpRight size={16} />}
-                    >
-                      {slide.secondaryBtn.label}
-                    </Button>
+                      <div className={styles.cardFooter}>
+                        <div className={styles.cardInfoCol}>
+                          <h4 className={styles.cardTitle}>{slide.card.title}</h4>
+                          <p className={styles.cardSubtitle}>{slide.card.info}</p>
+                        </div>
+
+                        <div className={styles.cardBtn} aria-hidden="true">
+                          <ArrowUpRight size={20} className={styles.cardBtnIcon} />
+                        </div>
+                      </div>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -181,7 +233,6 @@ export default function HomeHero() {
       ) : (
         /* Static SSR fallback */
         <div className={styles.staticHero}>
-           
           <div className={styles.imageContainer}>
             <Image
               src={firstSlide.image}
@@ -193,52 +244,82 @@ export default function HomeHero() {
             />
           </div>
           <div className={styles.overlay} />
-          
           <div className="container">
-            <div className={styles.content}>
-              <div className={styles.meta}>
-                <span className={styles.slideNumber}>
-                  {firstSlide.slideNumber}{" "}
-                  <span className={styles.slash}>/</span>{" "}
-                  {firstSlide.totalSlides}
-                </span>
-                <span className={styles.brandSeparator}>•</span>
-                <span className={styles.brandName}>{firstSlide.brand}</span>
+            <div className={styles.heroRow}>
+              <div className={styles.content}>
+                <div className={styles.meta}>
+                  <span className={styles.slideNumber}>
+                    {firstSlide.slideNumber}{" "}
+                    <span className={styles.slash}>/</span>{" "}
+                    {firstSlide.totalSlides}
+                  </span>
+                  <span className={styles.brandSeparator}>•</span>
+                  <span className={styles.brandName}>{firstSlide.brand}</span>
+                </div>
+
+                <div className={styles.eyebrow}>
+                  <Sparkles size={13} className={styles.sparkleIcon} />
+                  <span>{firstSlide.eyebrow}</span>
+                </div>
+
+                <h1 className={styles.title}>
+                  <span className={styles.titleLine}>
+                    {firstSlide.titleLine1}
+                  </span>
+                  <span className={styles.titleLine}>
+                    {firstSlide.titleLine2}
+                  </span>
+                </h1>
+                <p className={styles.description}>{firstSlide.description}</p>
+
+                <div className={styles.btnGroup}>
+                  <Button
+                    variant="primary"
+                    size="md"
+                    href={firstSlide.primaryBtn.href}
+                    icon={<ArrowRight size={16} />}
+                  >
+                    {firstSlide.primaryBtn.label}
+                  </Button>
+
+                  <Button
+                    variant="outline"
+                    size="md"
+                    href={firstSlide.secondaryBtn.href}
+                    icon={<ArrowUpRight size={16} />}
+                  >
+                    {firstSlide.secondaryBtn.label}
+                  </Button>
+                </div>
               </div>
 
-              <div className={styles.eyebrow}>
-                <Sparkles size={13} className={styles.sparkleIcon} />
-                <span>{firstSlide.eyebrow}</span>
-              </div>
-
-              <h1 className={styles.title}>
-                <span className={styles.titleLine}>
-                  {firstSlide.titleLine1}
-                </span>
-                <span className={styles.titleLine}>
-                  {firstSlide.titleLine2}
-                </span>
-              </h1>
-              <p className={styles.description}>{firstSlide.description}</p>
-
-              <div className={styles.btnGroup}>
-                <Button
-                  variant="primary"
-                  size="md"
-                  href={firstSlide.primaryBtn.href}
-                  icon={<ArrowRight size={16} />}
+              {/* Static Right Column: Single Featured Card matching reference design */}
+              <div className={styles.featureCardsCol}>
+                <Link
+                  href={firstSlide.card.href}
+                  className={styles.featureCard}
                 >
-                  {firstSlide.primaryBtn.label}
-                </Button>
+                  <div className={styles.cardThumb}>
+                    <Image
+                      src={firstSlide.card.image}
+                      alt={firstSlide.card.title}
+                      fill
+                      sizes="(max-width: 1200px) 340px, 380px"
+                      className={styles.cardThumbImg}
+                    />
+                  </div>
 
-                <Button
-                  variant="outline"
-                  size="md"
-                  href={firstSlide.secondaryBtn.href}
-                  icon={<ArrowUpRight size={16} />}
-                >
-                  {firstSlide.secondaryBtn.label}
-                </Button>
+                  <div className={styles.cardFooter}>
+                    <div className={styles.cardInfoCol}>
+                      <h4 className={styles.cardTitle}>{firstSlide.card.title}</h4>
+                      <p className={styles.cardSubtitle}>{firstSlide.card.info}</p>
+                    </div>
+
+                    <div className={styles.cardBtn} aria-hidden="true">
+                      <ArrowUpRight size={20} className={styles.cardBtnIcon} />
+                    </div>
+                  </div>
+                </Link>
               </div>
             </div>
           </div>

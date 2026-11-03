@@ -59,7 +59,7 @@
   transform: scale(1.06);
 }
 
-// Natural Vignette Overlay - dark left for text contrast, translucent right for image beauty
+// Natural Vignette Overlay - dark on left for text, balanced on right for vertical glass cards
 .overlay {
   position: absolute;
   inset: 0;
@@ -67,9 +67,9 @@
   background: linear-gradient(
     90deg,
     rgba(10, 8, 7, 0.9) 0%,
-    rgba(10, 8, 7, 0.76) 52%,
-    rgba(10, 8, 7, 0.3) 80%,
-    rgba(10, 8, 7, 0.38) 100%
+    rgba(10, 8, 7, 0.74) 45%,
+    rgba(10, 8, 7, 0.38) 75%,
+    rgba(10, 8, 7, 0.62) 100%
   );
 
   @media (max-width: 768px) {
@@ -82,16 +82,26 @@
   }
 }
 
-// Left Aligned Content
-.content {
+// Hero Row Layout inside global .container
+.heroRow {
   position: relative;
   z-index: 2;
-  max-width: 1050px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2.5rem;
+  width: 100%;
+}
+
+// Left Aligned Content
+.content {
+  flex: 1;
+  max-width: 660px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   text-align: left;
-  padding: 3.5rem 0;
+  padding: 3rem 0;
 }
 
 // Slide Number & Brand
@@ -151,16 +161,15 @@
   color: var(--secondaryColor);
 }
 
-// Main Title H1 - exactly 2 lines
+// Main Title H1 - 2 distinct lines
 .title {
   width: 100%;
-  max-width: 1000px;
-  font-size: clamp(2.4rem, 4.3vw, 3.65rem);
+  font-size: clamp(2.2rem, 3.8vw, 3.25rem);
   font-weight: 800;
-  line-height: 1.14;
+  line-height: 1.15;
   letter-spacing: -0.025em;
   color: #ffffff;
-  margin-bottom: 1.25rem;
+  margin-bottom: 1.15rem;
   text-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
 }
 
@@ -173,13 +182,13 @@
   }
 }
 
-// Description - strictly 2 lines max
+// Description - 2 lines max
 .description {
-  font-size: clamp(0.95rem, 1.15vw, 1.05rem);
+  font-size: clamp(0.92rem, 1.1vw, 1.02rem);
   line-height: 1.65;
   color: rgba(255, 255, 255, 0.82);
   margin-bottom: 2rem;
-  max-width: 540px;
+  max-width: 520px;
   text-shadow: 0 1px 8px rgba(0, 0, 0, 0.4);
 }
 
@@ -195,4 +204,119 @@
     width: 100%;
     align-items: stretch;
   }
+}
+
+// Right Column: Single Featured Card matching user's reference design
+.featureCardsCol {
+  display: none;
+  width: clamp(320px, 26vw, 360px);
+  flex-shrink: 0;
+  flex-direction: column;
+
+  @media (min-width: 1024px) {
+    display: flex;
+  }
+}
+
+.featureCard {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 0.85rem;
+  border-radius: 22px;
+  background: rgba(26, 22, 19, 0.72);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
+
+  &:hover {
+    background: rgba(32, 27, 23, 0.86);
+    border-color: rgba(255, 255, 255, 0.26);
+
+    .cardThumbImg {
+      transform: scale(1.04);
+    }
+
+    .cardBtn {
+      background-color: var(--secondaryColor);
+      transform: translate(2px, -2px);
+    }
+  }
+}
+
+// Framed Top Image
+.cardThumb {
+  width: 100%;
+  height: 215px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 14px;
+  background-color: #1a1614;
+}
+
+.cardThumbImg {
+  object-fit: cover;
+  border-radius: 14px;
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+// Bottom Footer Row (Title + Info on left, Square Arrow Button on right)
+.cardFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.95rem 0.25rem 0.25rem;
+}
+
+.cardInfoCol {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  min-width: 0;
+}
+
+.cardTitle {
+  font-size: 1.08rem;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.3;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  letter-spacing: -0.01em;
+}
+
+.cardSubtitle {
+  font-size: 0.82rem;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.65);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.3;
+}
+
+// White Square Button with rounded corners & black Arrow
+.cardBtn {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background-color: #ffffff;
+  color: #12100e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  transition: transform 0.25s ease, background-color 0.25s ease;
+}
+
+.cardBtnIcon {
+  stroke-width: 2.2;
 }
