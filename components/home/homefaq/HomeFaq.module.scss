@@ -1,0 +1,172 @@
+// HomeFaq.module.scss - Mindful Interactive FAQ Section
+
+.faqSection {
+  width: 100%;
+  padding: 5rem 0 5.5rem;
+  background-color: #faf8f5;
+  font-family: var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+  @media (max-width: 768px) {
+    padding: 3.5rem 0 4rem;
+  }
+}
+
+.accordionWrapper {
+  max-width: 860px;
+  margin: 1.5rem auto 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.faqList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.faqItem {
+  background-color: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+  border: none;
+  box-shadow: none;
+  transition: background-color 0.25s ease;
+
+  &.open {
+    background-color: #ffffff;
+
+    .questionButton {
+      color: var(--primaryColor);
+    }
+  }
+}
+
+.questionButton {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+  padding: 1.25rem 1.4rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  font-family: inherit;
+  font-size: 1.02rem;
+  font-weight: 600;
+  color: var(--textColor);
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: var(--primaryColor);
+  }
+}
+
+.questionText {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex: 1;
+
+  @media (max-width: 540px) {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.35rem;
+  }
+}
+
+.categoryPill {
+  font-size: 0.62rem;
+  font-weight: 700;
+  color: var(--primaryColor);
+  background-color: rgba(135, 68, 41, 0.08);
+  padding: 0.18rem 0.55rem;
+  border-radius: 999px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  flex-shrink: 0;
+}
+
+.iconWrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--textColor);
+  opacity: 0.5;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s ease, color 0.2s ease;
+  flex-shrink: 0;
+}
+
+.iconOpen {
+  transform: rotate(180deg);
+  opacity: 1;
+  color: var(--primaryColor);
+}
+
+.answerWrapper {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.answerOpen {
+  grid-template-rows: 1fr;
+}
+
+.answerInner {
+  overflow: hidden;
+}
+
+.answerText {
+  padding: 0 1.4rem 1.35rem;
+  font-size: 0.92rem;
+  line-height: 1.7;
+  color: var(--textColor);
+  opacity: 0.78;
+}
+
+// Support Contact Card
+.supportBox {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 1.35rem 1.6rem;
+  background-color: #f1ede3;
+  border-radius: 12px;
+  border: none;
+  margin-top: 1rem;
+
+  @media (max-width: 680px) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+.supportInfo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.supportIcon {
+  color: var(--primaryColor);
+  flex-shrink: 0;
+}
+
+.supportTitle {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--textColor);
+  margin-bottom: 0.2rem;
+}
+
+.supportDesc {
+  font-size: 0.82rem;
+  color: var(--textColor);
+  opacity: 0.7;
+  line-height: 1.4;
+}
+

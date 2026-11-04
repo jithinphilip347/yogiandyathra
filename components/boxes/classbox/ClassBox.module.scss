@@ -1,0 +1,259 @@
+// ClassBox.module.scss - Mindful Yoga Workshop & Course Card
+// Uses --font-inter from app/layout.tsx and color variables from app/globals.scss
+
+.cardWrapper {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  font-family: var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background-color: #e8e5da;
+  border-radius: 14px;
+  padding: 0.75rem;
+  border: none;
+  box-shadow: none;
+  transition: background-color 0.25s ease;
+
+  &.skeletonCard {
+    pointer-events: none;
+    cursor: default;
+    border: none;
+    box-shadow: none;
+
+    &:hover {
+      transform: none;
+      box-shadow: none;
+    }
+  }
+
+  // Purely flat hover state - NO transform translateY, NO box-shadow
+  &:hover {
+    transform: none;
+    box-shadow: none;
+
+    .cardImage {
+      transform: scale(1.03);
+    }
+
+    .title {
+      color: var(--primaryColor);
+    }
+
+    .arrowIcon {
+      color: var(--primaryColor);
+    }
+  }
+}
+
+.cardLink {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  text-decoration: none;
+  color: inherit;
+  font-family: inherit;
+}
+
+// Top Image Container (borderless, clean rounded corners)
+.imageContainer {
+  position: relative;
+  width: 100%;
+  height: 190px;
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: #d8d4c6;
+  border: none;
+  box-shadow: none;
+
+  @media (max-width: 480px) {
+    height: 180px;
+  }
+}
+
+.cardImage {
+  object-fit: cover;
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+// Category Badge (e.g. Popular, Intensive)
+.categoryBadge {
+  position: absolute;
+  top: 0.6rem;
+  left: 0.6rem;
+  z-index: 2;
+  background-color: #ffffff;
+  color: var(--primaryColor);
+  font-family: inherit;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.25rem 0.65rem;
+  border-radius: 999px;
+  border: none;
+  box-shadow: none;
+}
+
+// Floating Instructor Pill on Image (Bottom Right)
+.instructorBadge {
+  position: absolute;
+  bottom: 0.6rem;
+  right: 0.6rem;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  background-color: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding: 0.25rem 0.65rem 0.25rem 0.3rem;
+  border-radius: 999px;
+  border: none;
+  box-shadow: none;
+}
+
+.avatarWrapper {
+  position: relative;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+  border: none;
+}
+
+.avatarImage {
+  object-fit: cover;
+}
+
+.instructorInfo {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.15;
+}
+
+.instructorRole {
+  font-family: inherit;
+  font-size: 0.58rem;
+  font-weight: 600;
+  color: var(--primaryColor);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.instructorName {
+  font-family: inherit;
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: var(--textColor);
+  white-space: nowrap;
+}
+
+// Content Section
+.content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 0.95rem 0.25rem 0.25rem;
+  font-family: inherit;
+}
+
+.titleRow {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.9rem;
+  min-height: 2.3rem;
+}
+
+.title {
+  font-family: inherit;
+  font-size: 1.08rem;
+  font-weight: 600;
+  color: var(--textColor);
+  letter-spacing: -0.015em;
+  line-height: 1.3;
+  transition: color 0.25s ease;
+}
+
+.arrowIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--textColor);
+  opacity: 0.5;
+  transition: opacity 0.25s ease, color 0.25s ease;
+  flex-shrink: 0;
+  margin-top: 0.15rem;
+}
+
+// Meta Grid (Type | Time | Level)
+.metaGrid {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+  background-color: rgba(0, 0, 0, 0.035);
+  border-radius: 8px;
+  padding: 0.55rem 0.65rem;
+  border: none;
+}
+
+.metaItem {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.metaLabel {
+  font-family: inherit;
+  font-size: 0.62rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--textColor);
+  opacity: 0.6;
+}
+
+.metaValue {
+  font-family: inherit;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--textColor);
+  white-space: nowrap;
+}
+
+.metaDivider {
+  width: 1px;
+  height: 20px;
+  background-color: rgba(0, 0, 0, 0.09);
+  flex-shrink: 0;
+  border: none;
+}
+
+// Optional Price Row
+.priceRow {
+  margin-top: 0.75rem;
+  padding-top: 0.65rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: none;
+}
+
+.priceLabel {
+  font-family: inherit;
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: var(--textColor);
+  opacity: 0.6;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.priceValue {
+  font-family: inherit;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--primaryColor);
+}

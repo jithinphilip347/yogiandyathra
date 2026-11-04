@@ -64,6 +64,18 @@
 
 .outline {
   background-color: transparent;
+  color: #1e1c19;
+  border-color: rgba(0, 0, 0, 0.18);
+
+  &:hover {
+    background-color: var(--primaryColor);
+    border-color: var(--primaryColor);
+    color: #ffffff;
+  }
+}
+
+.outlineWhite {
+  background-color: transparent;
   color: #ffffff;
   border-color: rgba(255, 255, 255, 0.45);
 

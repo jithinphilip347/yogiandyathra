@@ -33,10 +33,6 @@ interface HeroSlide {
     label: string;
     href: string;
   };
-  secondaryBtn: {
-    label: string;
-    href: string;
-  };
   image: string;
   imageAlt: string;
   card: FeatureCard;
@@ -56,10 +52,6 @@ const slides: HeroSlide[] = [
     primaryBtn: {
       label: "Explore Collection",
       href: "/shop",
-    },
-    secondaryBtn: {
-      label: "Our Philosophy",
-      href: "/philosophy",
     },
     image: "/images/banner/banner-1.webp",
     imageAlt: "Sacred Rudraksha mala prayer beads for yoga and meditation",
@@ -83,10 +75,6 @@ const slides: HeroSlide[] = [
     primaryBtn: {
       label: "Explore Workshops",
       href: "/workshops",
-    },
-    secondaryBtn: {
-      label: "Discover Our Courses",
-      href: "/courses",
     },
     image: "/images/banner/banner-2.webp",
     imageAlt: "Yogify yoga workshops and courses banner",
@@ -175,7 +163,7 @@ export default function HomeHero() {
                     {/* Description */}
                     <p className={styles.description}>{slide.description}</p>
 
-                    {/* Buttons */}
+                    {/* Button */}
                     <div className={styles.btnGroup}>
                       <Button
                         variant="primary"
@@ -184,15 +172,6 @@ export default function HomeHero() {
                         icon={<ArrowRight size={16} />}
                       >
                         {slide.primaryBtn.label}
-                      </Button>
-
-                      <Button
-                        variant="outline"
-                        size="md"
-                        href={slide.secondaryBtn.href}
-                        icon={<ArrowUpRight size={16} />}
-                      >
-                        {slide.secondaryBtn.label}
                       </Button>
                     </div>
                   </div>
@@ -280,15 +259,6 @@ export default function HomeHero() {
                     icon={<ArrowRight size={16} />}
                   >
                     {firstSlide.primaryBtn.label}
-                  </Button>
-
-                  <Button
-                    variant="outline"
-                    size="md"
-                    href={firstSlide.secondaryBtn.href}
-                    icon={<ArrowUpRight size={16} />}
-                  >
-                    {firstSlide.secondaryBtn.label}
                   </Button>
                 </div>
               </div>

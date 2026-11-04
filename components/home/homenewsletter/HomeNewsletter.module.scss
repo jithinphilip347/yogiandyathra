@@ -1,0 +1,137 @@
+// HomeNewsletter.module.scss - Mindful Sangha Community Circular
+
+.newsletterSection {
+  width: 100%;
+  padding: 5rem 0 6rem;
+  background-color: #faf8f5;
+  font-family: var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+  @media (max-width: 768px) {
+    padding: 3.5rem 0 4.5rem;
+  }
+}
+
+.newsletterCard {
+  max-width: 900px;
+  margin: 0 auto;
+  background-color: #e8e5da;
+  border-radius: 16px;
+  padding: 3.5rem 2.5rem;
+  border: none;
+  box-shadow: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+
+  @media (max-width: 680px) {
+    padding: 2.5rem 1.25rem;
+  }
+}
+
+.form {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  max-width: 540px;
+  margin: 1.5rem auto 1.5rem;
+
+  @media (max-width: 600px) {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+}
+
+.inputWrapper {
+  position: relative;
+  flex: 1;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.mailIcon {
+  position: absolute;
+  left: 1rem;
+  color: var(--primaryColor);
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.emailInput {
+  width: 100%;
+  padding: 0.85rem 1rem 0.85rem 2.75rem;
+  background-color: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 999px;
+  font-family: inherit;
+  font-size: 0.92rem;
+  color: var(--textColor);
+  outline: none;
+  transition: border-color 0.2s ease;
+
+  &:focus {
+    border-color: var(--primaryColor);
+  }
+
+  &::placeholder {
+    color: var(--textColor);
+    opacity: 0.45;
+  }
+}
+
+.successMessage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 1.75rem;
+  background-color: #ffffff;
+  border-radius: 14px;
+  width: 100%;
+  max-width: 540px;
+  margin: 1.5rem auto;
+}
+
+.successIconBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: rgba(135, 68, 41, 0.1);
+  color: var(--primaryColor);
+}
+
+.successTitle {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--textColor);
+}
+
+.successDesc {
+  font-size: 0.88rem;
+  color: var(--textColor);
+  opacity: 0.75;
+  line-height: 1.5;
+}
+
+.perksRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.85rem;
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: var(--textColor);
+  opacity: 0.65;
+  flex-wrap: wrap;
+}
+
+.perkSeparator {
+  font-size: 0.55rem;
+  opacity: 0.4;
+}
+

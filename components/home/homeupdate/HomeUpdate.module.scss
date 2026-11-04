@@ -1,0 +1,148 @@
+// HomeUpdate.module.scss - Unified Master Promo Box with Alternating Top & Bottom Rows
+
+.updateSection {
+  width: 100%;
+  padding: 4.5rem 0 5rem;
+  background-color: #faf9f6;
+}
+
+// Single Unified Master Container Box
+.unifiedBox {
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: none;
+  overflow: hidden;
+  width: 100%;
+}
+
+// Banner Row (Top & Bottom)
+.bannerRow {
+  position: relative;
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  min-height: 330px;
+  background-color: #ffffff;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #fbf9f4;
+
+    .bannerImage {
+      transform: scale(1.03);
+    }
+  }
+
+  @media (max-width: 768px) {
+    flex-direction: column-reverse;
+    min-height: auto;
+  }
+}
+
+// For bottom row on mobile: content still appears before image nicely
+.bottomRow {
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
+}
+
+// Horizontal Divider Line between Top & Bottom rows
+.horizontalDivider {
+  width: 100%;
+  height: 1px;
+  background-color: rgba(0, 0, 0, 0.08);
+  flex-shrink: 0;
+}
+
+// Content Column
+.contentCol {
+  flex: 1.15;
+  padding: 3.25rem 3.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  z-index: 1;
+
+  @media (max-width: 1024px) {
+    padding: 2.5rem 2.25rem;
+  }
+
+  @media (max-width: 768px) {
+    padding: 2rem 1.5rem 2.25rem;
+    width: 100%;
+  }
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--primaryColor);
+  margin-bottom: 0.85rem;
+}
+
+.eyebrowDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--secondaryColor);
+  display: inline-block;
+}
+
+.title {
+  font-size: clamp(1.75rem, 2.3vw, 2.35rem);
+  font-weight: 500;
+  line-height: 1.22;
+  letter-spacing: -0.015em;
+  color: #1a1816;
+  margin-bottom: 0.85rem;
+}
+
+.description {
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: #5f5a52;
+  margin-bottom: 1.85rem;
+  max-width: 480px;
+}
+
+.promoCode {
+  font-weight: 700;
+  color: #1a1816;
+  letter-spacing: 0.02em;
+}
+
+.btnWrapper {
+  margin-top: 0.25rem;
+}
+
+// Image Column
+.imageCol {
+  position: relative;
+  flex: 1;
+  min-height: 330px;
+  align-self: stretch;
+  overflow: hidden;
+  background-color: #f7f6f2;
+  display: block;
+  text-decoration: none;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    min-height: 240px;
+    height: 240px;
+  }
+}
+
+.bannerImage {
+  object-fit: cover;
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}

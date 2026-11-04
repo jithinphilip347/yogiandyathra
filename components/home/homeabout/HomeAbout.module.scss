@@ -1,0 +1,228 @@
+// HomeAbout.module.scss - Mindful Philosophy & Heritage Section
+
+.aboutSection {
+  width: 100%;
+  padding: 5rem 0 5.5rem;
+  background-color: #faf8f5;
+  font-family: var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+  @media (max-width: 768px) {
+    padding: 3.5rem 0 4rem;
+  }
+}
+
+.aboutContent {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: 3.5rem;
+  align-items: center;
+  margin-top: 1rem;
+
+  @media (max-width: 980px) {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+}
+
+// Visual Image Column
+.imageCol {
+  position: relative;
+  width: 100%;
+}
+
+.mainImageWrapper {
+  position: relative;
+  width: 100%;
+  height: 520px;
+  border-radius: 16px;
+  overflow: hidden;
+  background-color: #e8e5da;
+
+  @media (max-width: 600px) {
+    height: 380px;
+  }
+}
+
+.aboutImage {
+  object-fit: cover;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+
+  &:hover {
+    transform: scale(1.02);
+  }
+}
+
+// Floating Lineage Pill (Bottom Left)
+.floatingBadge {
+  position: absolute;
+  bottom: 1.25rem;
+  left: 1.25rem;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 0.65rem 1.15rem;
+  border-radius: 999px;
+  border: none;
+  box-shadow: none;
+
+  @media (max-width: 480px) {
+    bottom: 0.75rem;
+    left: 0.75rem;
+    padding: 0.5rem 0.85rem;
+  }
+}
+
+.badgeIcon {
+  color: var(--primaryColor);
+  flex-shrink: 0;
+}
+
+.badgeText {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+.badgeTitle {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--textColor);
+}
+
+.badgeSubtitle {
+  font-size: 0.68rem;
+  color: var(--primaryColor);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+// Text & Narrative Column
+.textCol {
+  display: flex;
+  flex-direction: column;
+}
+
+.storyBlock {
+  margin-bottom: 2rem;
+}
+
+.storyHeading {
+  font-size: clamp(1.4rem, 2vw, 1.85rem);
+  font-weight: 600;
+  color: var(--textColor);
+  line-height: 1.35;
+  letter-spacing: -0.015em;
+  margin-bottom: 0.85rem;
+}
+
+.storyParagraph {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--textColor);
+  opacity: 0.78;
+}
+
+// Pillars List
+.pillarsList {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin-bottom: 2.25rem;
+}
+
+.pillarItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 0.85rem 1rem;
+  background-color: #ffffff;
+  border-radius: 12px;
+  border: none;
+  transition: background-color 0.25s ease;
+
+  &:hover {
+    background-color: #f5f2eb;
+  }
+}
+
+.iconBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  background-color: rgba(135, 68, 41, 0.08);
+  color: var(--primaryColor);
+  flex-shrink: 0;
+}
+
+.pillarText {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.pillarTitle {
+  font-size: 0.98rem;
+  font-weight: 700;
+  color: var(--textColor);
+}
+
+.pillarDesc {
+  font-size: 0.86rem;
+  line-height: 1.55;
+  color: var(--textColor);
+  opacity: 0.72;
+}
+
+// Stats Row
+.statsRow {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  padding: 1.35rem 0;
+  margin-bottom: 1.75rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.07);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.07);
+
+  @media (max-width: 480px) {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    text-align: center;
+  }
+}
+
+.statItem {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.statValue {
+  font-size: 1.65rem;
+  font-weight: 800;
+  color: var(--primaryColor);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.statLabel {
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: var(--textColor);
+  opacity: 0.65;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.actionRow {
+  display: flex;
+  align-items: center;
+}
+
