@@ -23,10 +23,10 @@ export interface BlogPost {
 const posts: BlogPost[] = [
   {
     id: "post-1",
-    title: "The Sacred Geometry of 5-Mukhi Rudraksha: Science and Spirituality",
+    title: "The Sacred Geometry of 5 Mukhi Rudraksha: Science and Spirituality",
     category: "Vedic Wisdom",
     excerpt:
-      "Explore why ancient sages revered the five-faced bead for balancing heart rhythms, harmonizing neural frequencies, and anchoring daily meditation.",
+      "Explore why ancient sages revered the five faced bead for balancing heart rhythms, harmonizing neural frequencies, and anchoring daily meditation.",
     image: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=800&q=80",
     date: "Nov 2, 2026",
     readTime: "6 min read",

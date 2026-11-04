@@ -29,8 +29,8 @@ export default function Home() {
       {/* 5. Philosophy & Lineage: Vedic heritage, 3 core pillars, stats */}
       <HomeAbout />
 
-      {/* 6. Voices of Sangha: Practitioner & seeker verified testimonials */}
-      <HomeTestimonial />
+      {/* 6. Voices of Sangha: Practitioner & seeker verified testimonials (commented out as requested) */}
+      {/* <HomeTestimonial /> */}
 
       {/* 7. Frequently Asked Questions: Interactive accordion */}
       <HomeFaq />

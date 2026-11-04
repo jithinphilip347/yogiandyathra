@@ -93,8 +93,8 @@ export interface HomeCourseProps {
 
 export default function HomeCourse({
   eyebrow = "YOGIFY WORKSHOPS",
-  title = "Transform Your Practice with *Expert-Led* Classes",
-  hookWord = "Expert-Led",
+  title = "Transform Your Practice with *Expert Led* Classes",
+  hookWord = "Expert Led",
   description = "Join immersive live sessions and self-paced journeys designed by master practitioners to elevate your mind, body, and breath.",
   courses = defaultCourses,
   isLoading = false,

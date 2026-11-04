@@ -71,7 +71,7 @@ const slides: HeroSlide[] = [
     titleLine1: "Your Journey to Inner",
     titleLine2: "Peace Begins Here.",
     description:
-      "Join expert-led yoga workshops and transformative courses designed to nurture your mind, body, and spirit.",
+      "Join expert led yoga workshops and transformative courses designed to nurture your mind, body, and spirit.",
     primaryBtn: {
       label: "Explore Workshops",
       href: "/workshops",
@@ -79,7 +79,7 @@ const slides: HeroSlide[] = [
     image: "/images/banner/banner-2.webp",
     imageAlt: "Yogify yoga workshops and courses banner",
     card: {
-      title: "Vinyasa & Prana Flow",
+      title: "Yoga Online Class",
       info: "Interactive Live • 90 Mins",
       image: "/images/banner/banner-2.webp",
       href: "/workshops",

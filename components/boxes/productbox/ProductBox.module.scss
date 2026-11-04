@@ -53,9 +53,85 @@
   background-color: #e8e5da;
   border: none;
   box-shadow: none;
+}
 
-  @media (max-width: 480px) {
-    height: 190px;
+@media (max-width: 1024px) {
+  .imageContainer {
+    height: 210px;
+  }
+}
+
+@media (max-width: 768px) {
+  .imageContainer {
+    height: 200px;
+  }
+
+  .title {
+    font-size: 1rem;
+  }
+
+  .currentPrice {
+    font-size: 1.08rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .cardWrapper {
+    padding: 0.65rem;
+  }
+
+  .imageContainer {
+    height: 210px;
+  }
+
+  .title {
+    font-size: 0.98rem;
+    min-height: auto;
+    margin-bottom: 0.35rem;
+  }
+
+  .category {
+    font-size: 0.58rem;
+  }
+
+  .currentPrice {
+    font-size: 1.05rem;
+  }
+}
+
+@media (max-width: 420px) {
+  .cardWrapper {
+    padding: 0.55rem;
+    border-radius: 12px;
+  }
+
+  .imageContainer {
+    height: 185px;
+    border-radius: 8px;
+  }
+
+  .badge {
+    font-size: 0.58rem;
+    padding: 0.2rem 0.5rem;
+    top: 0.5rem;
+    left: 0.5rem;
+  }
+
+  .title {
+    font-size: 0.92rem;
+    min-height: auto;
+  }
+
+  .currentPrice {
+    font-size: 1rem;
+  }
+
+  .originalPrice {
+    font-size: 0.75rem;
+  }
+
+  .discountBadge {
+    font-size: 0.58rem;
   }
 }
 

@@ -25,7 +25,7 @@ const faqs: FaqItem[] = [
   },
   {
     id: "faq-2",
-    question: "Are the Yogify yoga workshops beginner-friendly?",
+    question: "Are the Yogify yoga workshops beginner friendly?",
     answer:
       "Yes! Our workshops range from 'All Levels' gentle breathwork and restorative yoga to advanced Ashtanga masterclasses. Each course card clearly indicates the skill level, and our instructors always offer thoughtful variations for practitioners of all experience levels.",
     category: "Workshops",
@@ -34,7 +34,7 @@ const faqs: FaqItem[] = [
     id: "faq-3",
     question: "How do I access live masterclasses after enrolling?",
     answer:
-      "Upon enrollment, you will receive an instant confirmation email with calendar integration and a direct high-definition stream link. You can join live from your computer, tablet, or phone, with two-way camera interaction for personal posture corrections.",
+      "Upon enrollment, you will receive an instant confirmation email with calendar integration and a direct high definition stream link. You can join live from your computer, tablet, or phone, with two way camera interaction for personal posture corrections.",
     category: "Workshops",
   },
   {
@@ -48,14 +48,14 @@ const faqs: FaqItem[] = [
     id: "faq-5",
     question: "Do you ship sacred spiritual products worldwide?",
     answer:
-      "Yes, we provide insured international shipping to over 45 countries with end-to-end tracking. Products are consecrated, blessed, and carefully cushioned in eco-friendly protective packaging to ensure safe arrival.",
+      "Yes, we provide insured international shipping to over 45 countries with end to end tracking. Products are consecrated, blessed, and carefully cushioned in eco friendly protective packaging to ensure safe arrival.",
     category: "Shipping",
   },
   {
     id: "faq-6",
     question: "What is your return and satisfaction policy?",
     answer:
-      "We provide a 14-day mindful return window for all spiritual artifacts and jewelry. If an item arrives damaged or does not align with your intentions, our compassionate sangha support team will promptly issue an exchange or full refund.",
+      "We provide a 14 day mindful return window for all spiritual artifacts and jewelry. If an item arrives damaged or does not align with your intentions, our compassionate sangha support team will promptly issue an exchange or full refund.",
     category: "Orders",
   },
 ];

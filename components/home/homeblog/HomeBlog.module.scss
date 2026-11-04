@@ -6,8 +6,20 @@
   background-color: #faf8f5;
   font-family: var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 
+  @media (max-width: 1024px) {
+    padding: 4.5rem 0 5rem;
+  }
+
   @media (max-width: 768px) {
     padding: 3.5rem 0 4rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 3rem 0 3.5rem;
+  }
+
+  @media (max-width: 420px) {
+    padding: 2.5rem 0 3rem;
   }
 }
 
@@ -17,14 +29,22 @@
   gap: 1.6rem;
   margin-top: 1rem;
 
-  @media (max-width: 980px) {
+  @media (max-width: 1024px) {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 1.35rem;
   }
 
-  @media (max-width: 640px) {
+  @media (max-width: 768px) {
     grid-template-columns: 1fr;
-    gap: 1.5rem;
+    gap: 1.25rem;
+  }
+
+  @media (max-width: 480px) {
+    gap: 1.15rem;
+  }
+
+  @media (max-width: 420px) {
+    gap: 1rem;
   }
 }
 
@@ -67,6 +87,18 @@
   height: 220px;
   overflow: hidden;
   background-color: #e8e5da;
+
+  @media (max-width: 768px) {
+    height: 230px;
+  }
+
+  @media (max-width: 480px) {
+    height: 200px;
+  }
+
+  @media (max-width: 420px) {
+    height: 180px;
+  }
 }
 
 .postImage {
@@ -97,6 +129,14 @@
   flex-direction: column;
   flex: 1;
   padding: 1.25rem 1.35rem 1.35rem;
+
+  @media (max-width: 480px) {
+    padding: 1.15rem 1.15rem 1.25rem;
+  }
+
+  @media (max-width: 420px) {
+    padding: 1rem;
+  }
 }
 
 .metaRow {
@@ -130,6 +170,18 @@
   line-height: 1.35;
   letter-spacing: -0.015em;
   margin-bottom: 0.65rem;
+
+  @media (max-width: 768px) {
+    font-size: 1.1rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1.05rem;
+  }
+
+  @media (max-width: 420px) {
+    font-size: 0.98rem;
+  }
 }
 
 .titleLink {
@@ -145,6 +197,12 @@
   opacity: 0.75;
   margin-bottom: 1.25rem;
   flex: 1;
+
+  @media (max-width: 420px) {
+    font-size: 0.84rem;
+    line-height: 1.55;
+    margin-bottom: 1rem;
+  }
 }
 
 .footerRow {
@@ -172,4 +230,3 @@
 .readArrow {
   transition: transform 0.2s ease, color 0.2s ease;
 }
-

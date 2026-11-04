@@ -63,9 +63,128 @@
   background-color: #d8d4c6;
   border: none;
   box-shadow: none;
+}
 
-  @media (max-width: 480px) {
-    height: 180px;
+@media (max-width: 1024px) {
+  .imageContainer {
+    height: 200px;
+  }
+}
+
+@media (max-width: 768px) {
+  .imageContainer {
+    height: 190px;
+  }
+
+  .title {
+    font-size: 1.02rem;
+  }
+
+  .metaGrid {
+    padding: 0.5rem 0.55rem;
+  }
+
+  .metaValue {
+    font-size: 0.78rem;
+  }
+
+  .metaLabel {
+    font-size: 0.6rem;
+  }
+
+  .priceValue {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .cardWrapper {
+    padding: 0.65rem;
+  }
+
+  .imageContainer {
+    height: 195px;
+  }
+
+  .title {
+    font-size: 1rem;
+  }
+
+  .titleRow {
+    margin-bottom: 0.75rem;
+    min-height: auto;
+  }
+
+  .instructorBadge {
+    padding: 0.2rem 0.55rem 0.2rem 0.25rem;
+  }
+
+  .avatarWrapper {
+    width: 26px;
+    height: 26px;
+  }
+
+  .instructorName {
+    font-size: 0.7rem;
+  }
+
+  .instructorRole {
+    font-size: 0.55rem;
+  }
+}
+
+@media (max-width: 420px) {
+  .cardWrapper {
+    padding: 0.55rem;
+    border-radius: 12px;
+  }
+
+  .imageContainer {
+    height: 175px;
+    border-radius: 8px;
+  }
+
+  .categoryBadge {
+    font-size: 0.58rem;
+    padding: 0.2rem 0.5rem;
+    top: 0.5rem;
+    left: 0.5rem;
+  }
+
+  .instructorBadge {
+    bottom: 0.5rem;
+    right: 0.5rem;
+    gap: 0.35rem;
+  }
+
+  .avatarWrapper {
+    width: 24px;
+    height: 24px;
+  }
+
+  .title {
+    font-size: 0.94rem;
+  }
+
+  .metaGrid {
+    padding: 0.45rem 0.5rem;
+    border-radius: 6px;
+  }
+
+  .metaLabel {
+    font-size: 0.55rem;
+  }
+
+  .metaValue {
+    font-size: 0.72rem;
+  }
+
+  .priceLabel {
+    font-size: 0.6rem;
+  }
+
+  .priceValue {
+    font-size: 0.94rem;
   }
 }
 

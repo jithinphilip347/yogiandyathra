@@ -75,6 +75,65 @@
     padding: 2rem 1.5rem 2.25rem;
     width: 100%;
   }
+
+  @media (max-width: 480px) {
+    padding: 1.75rem 1.25rem 2rem;
+  }
+
+  @media (max-width: 420px) {
+    padding: 1.35rem 1rem 1.65rem;
+  }
+}
+
+.logoWrapper {
+  margin-bottom: 0.95rem;
+  display: flex;
+  align-items: center;
+
+  @media (max-width: 420px) {
+    margin-bottom: 0.75rem;
+  }
+}
+
+.brandLogo {
+  width: auto;
+  height: 44px;
+  max-width: 140px;
+  object-fit: contain;
+
+  @media (max-width: 768px) {
+    height: 40px;
+    max-width: 130px;
+  }
+
+  @media (max-width: 480px) {
+    height: 36px;
+    max-width: 120px;
+  }
+
+  @media (max-width: 420px) {
+    height: 32px;
+    max-width: 110px;
+  }
+}
+
+.yogiLogo {
+  width: auto;
+  height: 56px;
+  max-width: 100px;
+  object-fit: contain;
+
+  @media (max-width: 768px) {
+    height: 48px;
+  }
+
+  @media (max-width: 480px) {
+    height: 42px;
+  }
+
+  @media (max-width: 420px) {
+    height: 36px;
+  }
 }
 
 .eyebrow {
@@ -87,6 +146,11 @@
   text-transform: uppercase;
   color: var(--primaryColor);
   margin-bottom: 0.85rem;
+
+  @media (max-width: 420px) {
+    font-size: 0.65rem;
+    margin-bottom: 0.65rem;
+  }
 }
 
 .eyebrowDot {
@@ -104,6 +168,15 @@
   letter-spacing: -0.015em;
   color: #1a1816;
   margin-bottom: 0.85rem;
+
+  @media (max-width: 480px) {
+    font-size: 1.65rem;
+  }
+
+  @media (max-width: 420px) {
+    font-size: 1.45rem;
+    line-height: 1.25;
+  }
 }
 
 .description {
@@ -112,6 +185,17 @@
   color: #5f5a52;
   margin-bottom: 1.85rem;
   max-width: 480px;
+
+  @media (max-width: 480px) {
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+  }
+
+  @media (max-width: 420px) {
+    font-size: 0.85rem;
+    line-height: 1.55;
+    margin-bottom: 1.25rem;
+  }
 }
 
 .promoCode {
@@ -139,6 +223,16 @@
     width: 100%;
     min-height: 240px;
     height: 240px;
+  }
+
+  @media (max-width: 480px) {
+    min-height: 220px;
+    height: 220px;
+  }
+
+  @media (max-width: 420px) {
+    min-height: 195px;
+    height: 195px;
   }
 }
 

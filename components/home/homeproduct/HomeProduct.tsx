@@ -14,7 +14,7 @@ export interface ProductItem extends ProductBoxProps {
 const defaultProducts: ProductItem[] = [
   {
     id: "prod-1",
-    title: "5-Mukhi Sacred Rudraksha Mala",
+    title: "5 Mukhi Sacred Rudraksha Mala",
     category: "Sacred Malas",
     price: "₹1,299",
     originalPrice: "₹1,899",
@@ -27,7 +27,7 @@ const defaultProducts: ProductItem[] = [
   },
   {
     id: "prod-2",
-    title: "Gold-Accented Rudraksha Bracelet",
+    title: "Gold Accented Rudraksha Bracelet",
     category: "Spiritual Adornment",
     price: "₹999",
     originalPrice: "₹1,499",

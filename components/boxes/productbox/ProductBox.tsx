@@ -49,7 +49,7 @@ export function ProductBoxSkeleton({ className = "" }: { className?: string }) {
 }
 
 export default function ProductBox({
-  title = "5-Mukhi Sacred Rudraksha Mala",
+  title = "5 Mukhi Sacred Rudraksha Mala",
   category = "Sacred Malas",
   price = "₹1,299",
   originalPrice = "₹1,899",

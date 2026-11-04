@@ -172,7 +172,7 @@
   display: block;
   white-space: nowrap;
 
-  @media (max-width: 900px) {
+  @media (max-width: 768px) {
     white-space: normal;
   }
 }
@@ -204,13 +204,39 @@
 
 // Right Column: Single Featured Card matching user's reference design
 .featureCardsCol {
-  display: none;
+  display: flex;
   width: clamp(320px, 26vw, 360px);
   flex-shrink: 0;
   flex-direction: column;
 
-  @media (min-width: 1024px) {
-    display: flex;
+  @media (max-width: 1024px) {
+    display: none;
+  }
+}
+
+@media (max-width: 420px) {
+  .heroSection {
+    min-height: 480px;
+  }
+
+  .content {
+    padding: 2rem 0;
+  }
+
+  .title {
+    font-size: 2.1rem;
+    margin-bottom: 1rem;
+  }
+
+  .description {
+    font-size: 0.88rem;
+    line-height: 1.55;
+    margin-bottom: 1.75rem;
+  }
+
+  .eyebrow {
+    font-size: 0.65rem;
+    padding: 0.28rem 0.75rem;
   }
 }
 

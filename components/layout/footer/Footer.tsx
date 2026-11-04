@@ -170,7 +170,7 @@ export default function Footer() {
                 Mindful Living · Sacred Yathra · Yogify Workshops
               </p>
               <p className={styles.brandBio}>
-                Rooted in authentic Himalayan and Vedic traditions. Bridging certified sacred spiritual artifacts with transformative master-led yoga immersions for conscious seekers worldwide.
+                Rooted in authentic Himalayan and Vedic traditions. Bridging certified sacred spiritual artifacts with transformative master led yoga immersions for conscious seekers worldwide.
               </p>
 
               {/* Direct Contact Details */}

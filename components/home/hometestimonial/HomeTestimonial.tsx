@@ -27,7 +27,7 @@ const testimonials: TestimonialItem[] = [
     rating: 5,
     tag: "Authentic Rudraksha",
     content:
-      "The 5-mukhi Rudraksha mala from Yogi & Yathra carries an undeniable calm energy. Certified, pristine, and blessed with sacred devotion. It has become an essential part of my daily japa meditation.",
+      "The 5 mukhi Rudraksha mala from Yogi & Yathra carries an undeniable calm energy. Certified, pristine, and blessed with sacred devotion. It has become an essential part of my daily japa meditation.",
   },
   {
     id: "2",
@@ -47,7 +47,7 @@ const testimonials: TestimonialItem[] = [
     rating: 5,
     tag: "Spiritual Yathra",
     content:
-      "The Varanasi pilgrimage journey curated by Yogi & Yathra was life-altering. Every detail was held with mindful reverence, quiet stillness, and supreme respect for Vedic heritage. Deeply grateful.",
+      "The Varanasi pilgrimage journey curated by Yogi & Yathra was life altering. Every detail was held with mindful reverence, quiet stillness, and supreme respect for Vedic heritage. Deeply grateful.",
   },
 ];
 

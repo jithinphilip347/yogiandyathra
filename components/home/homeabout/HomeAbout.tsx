@@ -19,15 +19,15 @@ export default function HomeAbout() {
     },
     {
       icon: <Sparkles size={22} className={styles.pillarIcon} />,
-      title: "Master-Led Immersions",
+      title: "Master Led Immersions",
       description:
-        "Practice with certified Yoga Acharyas who teach beyond postures — integrating breath, philosophy, and stillness.",
+        "Practice with certified Yoga Acharyas who teach beyond postures, integrating breath, philosophy, and stillness.",
     },
     {
       icon: <Compass size={22} className={styles.pillarIcon} />,
       title: "Conscious Yathra (Journeys)",
       description:
-        "Curated spiritual pilgrimages to sacred sanctuaries across India designed for deep self-reflection and inner renewal.",
+        "Curated spiritual pilgrimages to sacred sanctuaries across India designed for deep self reflection and inner renewal.",
     },
   ];
 
@@ -99,7 +99,7 @@ export default function HomeAbout() {
           >
             <div className={styles.storyBlock}>
               <h3 className={styles.storyHeading}>
-                More than a practice — a return to stillness.
+                More than a practice, a return to stillness.
               </h3>
               <p className={styles.storyParagraph}>
                 In a world that never stops moving, we create spaces and tools that invite you to pause. Whether through authentic prayer malas that anchor your daily mantra or live interactive workshops that align breath and posture, every offering is crafted with pure intention.

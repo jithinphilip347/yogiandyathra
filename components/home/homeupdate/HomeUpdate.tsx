@@ -26,9 +26,7 @@ export default function HomeUpdate() {
           variants={sectionFadeIn}
         >
           <SecHead
-            eyebrow="Special Updates"
-            title="Our Most-*Loved* Highlights"
-            description="Carefully curated for you — discover sacred spiritual essentials alongside transformative yoga immersions."
+            title="Spiritual *Journey* for Both Mind and Body"
             align="center"
           />
         </motion.div>
@@ -41,22 +39,27 @@ export default function HomeUpdate() {
           viewport={{ once: true, amount: 0.15 }}
           transition={{ duration: 0.75, ease: mindfulEase }}
         >
-          {/* Top Row: Left Text, Right Image (Yogi & Yathra Flash Sale) */}
+          {/* Top Row: Left Text, Right Image (Yogify Sacred Product) */}
           <motion.div
             className={`${styles.bannerRow} ${styles.topRow}`}
             variants={itemFadeUp}
           >
             <div className={styles.contentCol}>
-              <div className={styles.eyebrow}>
-                <span className={styles.eyebrowDot} />
-                <span>Flash Sale · Yogi & Yathra</span>
+              {/* Yogify Brand Logo from public/images/Yogify.png */}
+              <div className={styles.logoWrapper}>
+                <Image
+                  src="/images/Yogify.png"
+                  alt="Yogify"
+                  width={140}
+                  height={54}
+                  className={styles.brandLogo}
+                />
               </div>
 
-              <h3 className={styles.title}>Sacred Abundance</h3>
+              <h3 className={styles.title}>Spiritual Accessories</h3>
 
               <p className={styles.description}>
-                Get 25% off authentic Rudraksha malas and gold-accented bracelets with code:{" "}
-                <span className={styles.promoCode}>YOGI25</span>.
+                Authentic consecrated malas, sacred beads, and mindful accessories crafted to bring serenity, focus, and spiritual depth to your daily practice.
               </p>
 
               <div className={styles.btnWrapper}>
@@ -74,7 +77,7 @@ export default function HomeUpdate() {
             <Link
               href="/shop"
               className={styles.imageCol}
-              aria-label="View Sacred Abundance collection"
+              aria-label="View Spiritual Accessories collection"
             >
               <Image
                 src="/images/products/rudraksha-bracelet.jpg"
@@ -97,11 +100,11 @@ export default function HomeUpdate() {
             <Link
               href="/workshops"
               className={styles.imageCol}
-              aria-label="Explore Yogify yoga classes and workshops"
+              aria-label="Explore Yoga & Meditation classes and workshops"
             >
               <Image
                 src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=1000&q=80"
-                alt="Yogify yoga class master practicing mindfulness meditation"
+                alt="Mindfulness yoga and meditation master practicing at sunrise"
                 fill
                 sizes="(max-width: 768px) 100vw, 650px"
                 className={styles.bannerImage}
@@ -109,15 +112,21 @@ export default function HomeUpdate() {
             </Link>
 
             <div className={styles.contentCol}>
-              <div className={styles.eyebrow}>
-                <span className={styles.eyebrowDot} />
-                <span>Live Workshop · Yogify</span>
+              {/* Yogi & Yathra Brand Logo from public/images/yogi-and-yathra.png */}
+              <div className={styles.logoWrapper}>
+                <Image
+                  src="/images/yogi-and-yathra.png"
+                  alt="Yogi & Yathra"
+                  width={64}
+                  height={64}
+                  className={styles.yogiLogo}
+                />
               </div>
 
-              <h3 className={styles.title}>Prana & Flow</h3>
+              <h3 className={styles.title}>Yoga & Meditation</h3>
 
               <p className={styles.description}>
-                Transform your breath and movement with expert-led weekend yoga immersions and masterclasses.
+                Harmonize mind, body, and breath through authentic yogic practices and guided meditation sessions designed to cultivate lasting inner calm and vitality.
               </p>
 
               <div className={styles.btnWrapper}>

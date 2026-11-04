@@ -5,8 +5,20 @@
   padding: 4.5rem 0 5rem;
   background-color: #faf8f5;
 
+  @media (max-width: 1024px) {
+    padding: 4rem 0 4.5rem;
+  }
+
   @media (max-width: 768px) {
     padding: 3.5rem 0 4rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 3rem 0 3.5rem;
+  }
+
+  @media (max-width: 420px) {
+    padding: 2.5rem 0 3rem;
   }
 }
 
@@ -18,16 +30,27 @@
   width: 100%;
   align-items: stretch;
 
-  // Medium screens / Tablets: 2 columns
-  @media (max-width: 1080px) {
+  // Tablet Landscape / Small Desktop: 2 columns
+  @media (max-width: 1024px) {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 1.15rem;
   }
 
-  // Mobile: 1 column centered
-  @media (max-width: 580px) {
+  // Tablet Portrait: 2 columns with slightly adjusted gap
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+  }
+
+  // Mobile: 1 column
+  @media (max-width: 480px) {
     grid-template-columns: minmax(0, 1fr);
-    gap: 1.15rem;
-    justify-items: center;
+    gap: 1rem;
+  }
+
+  // Small Mobile: 1 column
+  @media (max-width: 420px) {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.85rem;
   }
 }

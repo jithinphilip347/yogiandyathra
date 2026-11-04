@@ -8,9 +8,75 @@
   flex-direction: column;
   align-items: flex-start;
   text-align: left;
+}
 
-  @media (max-width: 768px) {
+@media (max-width: 1024px) {
+  .secHead {
+    margin-bottom: 2.25rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .secHead {
     margin-bottom: 2rem;
+  }
+
+  .title {
+    font-size: 1.85rem;
+  }
+
+  .spaceBetween {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.25rem;
+  }
+
+  .actionCol {
+    align-self: flex-start;
+    margin-top: 0.5rem;
+    margin-bottom: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .secHead {
+    margin-bottom: 1.75rem;
+  }
+
+  .title {
+    font-size: 1.65rem;
+  }
+
+  .eyebrowText {
+    font-size: 0.68rem;
+  }
+
+  .description {
+    font-size: 0.88rem;
+  }
+}
+
+@media (max-width: 420px) {
+  .secHead {
+    margin-bottom: 1.5rem;
+  }
+
+  .title {
+    font-size: 1.48rem;
+  }
+
+  .eyebrowText {
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+  }
+
+  .description {
+    font-size: 0.84rem;
+    line-height: 1.55;
+  }
+
+  .actionLink {
+    font-size: 0.85rem;
   }
 }
 
@@ -52,15 +118,15 @@
   letter-spacing: -0.02em;
   color: #1e1c19;
 
-  // Elegant Serif Italic Hook Word matching reference image
+  // Inter Italic Hook Word - reduced font weight for elegant contrast
   em,
   i,
   .italicHook {
-    font-family: var(--font-playfair), "Playfair Display", Georgia, "Times New Roman", serif;
+    font-family: var(--font-inter), sans-serif;
     font-style: italic;
-    font-weight: 600;
-    letter-spacing: 0.01em;
-    padding: 0 0.08em;
+    font-weight: 400;
+    letter-spacing: inherit;
+    padding: 0 0.04em;
     color: inherit;
     display: inline-block;
   }
@@ -95,12 +161,6 @@
   align-items: flex-end;
   justify-content: space-between;
   gap: 2rem;
-
-  @media (max-width: 680px) {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 1.25rem;
-  }
 }
 
 // Action Link (View All / Explore)
