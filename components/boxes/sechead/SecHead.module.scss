@@ -118,7 +118,7 @@
   letter-spacing: -0.02em;
   color: #1e1c19;
 
-  // Inter Italic Hook Word - reduced font weight for elegant contrast
+  // Inter Italic Hook Word - reduced font weight for elegant contrast & primary brand color
   em,
   i,
   .italicHook {
@@ -127,7 +127,7 @@
     font-weight: 400;
     letter-spacing: inherit;
     padding: 0 0.04em;
-    color: inherit;
+    color: var(--primaryColor);
     display: inline-block;
   }
 }
@@ -201,6 +201,12 @@
 .darkTheme {
   .title {
     color: #ffffff;
+
+    em,
+    i,
+    .italicHook {
+      color: var(--secondaryColor);
+    }
   }
 
   .description {

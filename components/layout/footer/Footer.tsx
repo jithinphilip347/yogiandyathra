@@ -7,7 +7,6 @@ import {
   ShieldCheck,
   Sparkles,
   Heart,
-  ArrowUp,
 } from "lucide-react";
 import styles from "./Footer.module.scss";
 
@@ -128,7 +127,7 @@ export default function Footer() {
               <ShieldCheck size={20} className={styles.trustIcon} />
               <div className={styles.trustText}>
                 <span className={styles.trustTitle}>Certified Vedic Authenticity</span>
-                <span className={styles.trustDesc}>Lab tested & Himalayan consecrated</span>
+                <span className={styles.trustDesc}>Lab tested & quality pick</span>
               </div>
             </div>
 
@@ -137,8 +136,8 @@ export default function Footer() {
             <div className={styles.trustItem}>
               <Sparkles size={20} className={styles.trustIcon} />
               <div className={styles.trustText}>
-                <span className={styles.trustTitle}>Yoga Alliance Certified</span>
-                <span className={styles.trustDesc}>Lineage-rooted master acharyas</span>
+                <span className={styles.trustTitle}>Yoga Alliance Certified Acharyas</span>
+                <span className={styles.trustDesc}>Lineage rooted master guidance</span>
               </div>
             </div>
 
@@ -167,7 +166,7 @@ export default function Footer() {
                 </span>
               </Link>
               <p className={styles.brandTagline}>
-                Mindful Living · Sacred Yathra · Yogify Workshops
+                Mindful Living · Sacred Yathra · Spiritual Store · Workshops
               </p>
               <p className={styles.brandBio}>
                 Rooted in authentic Himalayan and Vedic traditions. Bridging certified sacred spiritual artifacts with transformative master led yoga immersions for conscious seekers worldwide.
@@ -175,17 +174,17 @@ export default function Footer() {
 
               {/* Direct Contact Details */}
               <div className={styles.contactList}>
-                <a href="mailto:support@yogianyathra.com" className={styles.contactItem}>
+                <a href="mailto:yy.yogify@gmail.com" className={styles.contactItem}>
                   <Mail size={15} className={styles.contactIcon} />
-                  <span>support@yogianyathra.com</span>
+                  <span>yy.yogify@gmail.com</span>
                 </a>
-                <a href="tel:+919876543210" className={styles.contactItem}>
+                <a href="tel:+917994219909" className={styles.contactItem}>
                   <Phone size={15} className={styles.contactIcon} />
-                  <span>+91 (0) 98765 43210</span>
+                  <span>+91 7994219909</span>
                 </a>
                 <div className={styles.contactItem}>
                   <MapPin size={15} className={styles.contactIcon} />
-                  <span>Rishikesh · Varanasi · Bengaluru, India</span>
+                  <span>Yogify, Srividya Yoga Gurukulam, Elavoor Kavala, Karukutty, Angamaly, Kerala 683576</span>
                 </div>
               </div>
 
@@ -322,12 +321,6 @@ export default function Footer() {
                 Mindful Guarantee
               </Link>
             </div>
-
-            {/* Back to Top Quick Action */}
-            <a href="#home" className={styles.backToTopBtn} aria-label="Back to Top">
-              <span>Back to Top</span>
-              <ArrowUp size={14} className={styles.backToTopIcon} />
-            </a>
           </div>
         </div>
       </div>

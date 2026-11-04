@@ -151,18 +151,18 @@ export default function SideNav({
 
         {/* Drawer Footer: Quick Sangha Contact & Timings */}
         <div className={styles.footer}>
-          <a href="tel:+919876543210" className={styles.contactItem}>
+          <a href="tel:+917994219909" className={styles.contactItem}>
             <Phone size={16} className={styles.contactIcon} />
-            <span>+91 98765 43210</span>
+            <span>+91 7994219909</span>
           </a>
-          <a href="mailto:hello@yogiyathra.com" className={styles.contactItem}>
+          <a href="mailto:yy.yogify@gmail.com" className={styles.contactItem}>
             <Mail size={16} className={styles.contactIcon} />
-            <span>hello@yogiyathra.com</span>
+            <span>yy.yogify@gmail.com</span>
           </a>
           <div className={styles.contactItem}>
             <Clock size={16} className={styles.contactIcon} />
             <span className={styles.timingText}>
-              Ashram Hours: 6:00 AM – 8:00 PM (Daily)
+              Ashram Hours: 6:00 AM to 8:00 PM (Daily)
             </span>
           </div>
         </div>

@@ -57,11 +57,35 @@
 
 .form {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 0.75rem;
+  gap: 1.15rem;
   width: 100%;
-  max-width: 540px;
-  margin: 1.5rem auto 1.5rem;
+  max-width: 520px;
+  margin: 1.75rem auto 1.5rem;
+
+  @media (max-width: 480px) {
+    gap: 0.95rem;
+    margin: 1.25rem auto 1.25rem;
+  }
+}
+
+.inputsGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  width: 100%;
+
+  @media (max-width: 480px) {
+    gap: 0.75rem;
+  }
+}
+
+.twoColRow {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  width: 100%;
 
   @media (max-width: 480px) {
     flex-direction: column;
@@ -77,17 +101,22 @@
   align-items: center;
 }
 
-.mailIcon {
+.inputIcon {
   position: absolute;
-  left: 1rem;
+  left: 1.1rem;
   color: var(--primaryColor);
-  opacity: 0.7;
+  opacity: 0.8;
   pointer-events: none;
+  flex-shrink: 0;
+
+  @media (max-width: 420px) {
+    left: 0.95rem;
+  }
 }
 
-.emailInput {
+.inputField {
   width: 100%;
-  padding: 0.85rem 1rem 0.85rem 2.75rem;
+  padding: 0.85rem 1rem 0.85rem 2.85rem;
   background-color: #ffffff;
   border: 1px solid rgba(0, 0, 0, 0.08);
   border-radius: 999px;
@@ -95,25 +124,40 @@
   font-size: 0.92rem;
   color: var(--textColor);
   outline: none;
-  transition: border-color 0.2s ease;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 
   @media (max-width: 480px) {
-    padding: 0.78rem 0.95rem 0.78rem 2.5rem;
+    padding: 0.78rem 0.95rem 0.78rem 2.65rem;
     font-size: 0.88rem;
   }
 
   @media (max-width: 420px) {
-    padding: 0.72rem 0.85rem 0.72rem 2.4rem;
+    padding: 0.72rem 0.85rem 0.72rem 2.5rem;
     font-size: 0.84rem;
   }
 
   &:focus {
     border-color: var(--primaryColor);
+    box-shadow: 0 0 0 3px rgba(135, 68, 41, 0.12);
   }
 
   &::placeholder {
     color: var(--textColor);
-    opacity: 0.45;
+    opacity: 0.48;
+  }
+}
+
+.btnWrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 0.25rem;
+
+  @media (max-width: 480px) {
+    button {
+      width: 100%;
+      justify-content: center;
+    }
   }
 }
 

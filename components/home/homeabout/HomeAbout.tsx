@@ -2,10 +2,9 @@
 
 import React from "react";
 import Image from "next/image";
-import { Sparkles, ShieldCheck, HeartHandshake, Compass, ArrowRight } from "lucide-react";
+import { Sparkles, ShieldCheck, HeartHandshake, Compass } from "lucide-react";
 import { motion } from "framer-motion";
 import SecHead from "@/components/boxes/sechead/SecHead";
-import Button from "@/components/ui/button/Button";
 import { sectionFadeIn, staggerContainer, itemFadeUp, mindfulEase } from "@/components/ui/animation/motionVariants";
 import styles from "./HomeAbout.module.scss";
 
@@ -21,7 +20,7 @@ export default function HomeAbout() {
       icon: <Sparkles size={22} className={styles.pillarIcon} />,
       title: "Master Led Immersions",
       description:
-        "Practice with certified Yoga Acharyas who teach beyond postures, integrating breath, philosophy, and stillness.",
+        "Practice with certified Yoga Acharyas who teach beyond postures.",
     },
     {
       icon: <Compass size={22} className={styles.pillarIcon} />,
@@ -33,7 +32,7 @@ export default function HomeAbout() {
 
   const stats = [
     { value: "15,000+", label: "Conscious Seekers" },
-    { value: "250+", label: "Yoga Masterclasses" },
+    { value: "15+", label: "Years of Experience" },
     { value: "100%", label: "Authentic & Ethical" },
   ];
 
@@ -140,18 +139,6 @@ export default function HomeAbout() {
                 </div>
               ))}
             </motion.div>
-
-            {/* Action CTA */}
-            <div className={styles.actionRow}>
-              <Button
-                variant="primary"
-                size="md"
-                href="/about"
-                icon={<ArrowRight size={16} />}
-              >
-                Discover Our Heritage
-              </Button>
-            </div>
           </motion.div>
         </div>
       </div>
