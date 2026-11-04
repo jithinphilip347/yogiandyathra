@@ -11,6 +11,7 @@ import styles from "./HomeUpdate.module.scss";
 export default function HomeUpdate() {
   return (
     <section
+      id="product"
       className={styles.updateSection}
       aria-label="Latest Updates and Featured Highlights"
     >

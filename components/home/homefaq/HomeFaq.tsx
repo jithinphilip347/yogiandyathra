@@ -66,7 +66,7 @@ export default function HomeFaq() {
   };
 
   return (
-    <section className={styles.faqSection} aria-label="Frequently Asked Questions">
+    <section id="faq" className={styles.faqSection} aria-label="Frequently Asked Questions">
       <div className="container">
         {/* Section Header */}
         <SecHead

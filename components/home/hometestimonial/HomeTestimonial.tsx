@@ -51,7 +51,7 @@ const testimonials: TestimonialItem[] = [
 
 export default function HomeTestimonial() {
   return (
-    <section className={styles.testimonialSection} aria-label="Seeker & Student Testimonials">
+    <section id="testimonial" className={styles.testimonialSection} aria-label="Seeker & Student Testimonials">
       <div className="container">
         {/* Section Header */}
         <SecHead

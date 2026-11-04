@@ -18,7 +18,7 @@ export default function HomeNewsletter() {
   };
 
   return (
-    <section className={styles.newsletterSection} aria-label="Join our mindful community newsletter">
+    <section id="newsletter" className={styles.newsletterSection} aria-label="Join our mindful community newsletter">
       <div className="container">
         <div className={styles.newsletterCard}>
           {/* Section Header */}

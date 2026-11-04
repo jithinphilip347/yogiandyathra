@@ -98,7 +98,7 @@ export default function HomeCourse({
   isLoading = false,
 }: HomeCourseProps) {
   return (
-    <section className={styles.courseSection} aria-label="Featured Yoga Courses and Workshops">
+    <section id="course" className={styles.courseSection} aria-label="Featured Yoga Courses and Workshops">
       <div className="container">
         {/* Section Header with Serif Italic Hook and Reusable Button CTA */}
         <SecHead

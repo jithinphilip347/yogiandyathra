@@ -97,7 +97,7 @@ export default function HomeHero() {
   const firstSlide = slides[0];
 
   return (
-    <section className={styles.heroSection} aria-label="Home Hero Banner">
+    <section id="home" className={styles.heroSection} aria-label="Home Hero Banner">
       {mounted ? (
         <Swiper
           modules={[Autoplay, EffectFade]}

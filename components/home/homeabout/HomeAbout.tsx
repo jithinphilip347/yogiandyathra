@@ -36,7 +36,7 @@ export default function HomeAbout() {
   ];
 
   return (
-    <section className={styles.aboutSection} aria-label="About Yogi & Yathra and Yogify">
+    <section id="about" className={styles.aboutSection} aria-label="About Yogi & Yathra and Yogify">
       <div className="container">
         {/* Section Header */}
         <SecHead

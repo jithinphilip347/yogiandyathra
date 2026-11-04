@@ -56,7 +56,7 @@ const posts: BlogPost[] = [
 
 export default function HomeBlog() {
   return (
-    <section className={styles.blogSection} aria-label="Wisdom Journal & Articles">
+    <section id="blogs" className={styles.blogSection} aria-label="Wisdom Journal & Articles">
       <div className="container">
         {/* Section Header */}
         <SecHead

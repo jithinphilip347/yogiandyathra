@@ -1,1 +1,326 @@
+// Footer.module.scss - Mindful Sanctuary Footer
+// Follows --font-inter from app/layout.tsx and colors from app/globals.scss
 
+.footer {
+  width: 100%;
+  background-color: #1a1614;
+  color: #ded9d0;
+  font-family: var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+// Top Pre-Footer Trust Bar
+.trustBar {
+  padding: 1.75rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.trustGrid {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+
+  @media (max-width: 860px) {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.25rem;
+  }
+}
+
+.trustItem {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.trustIcon {
+  color: var(--secondaryColor);
+  flex-shrink: 0;
+}
+
+.trustText {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.25;
+}
+
+.trustTitle {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.trustDesc {
+  font-size: 0.74rem;
+  color: rgba(222, 217, 208, 0.65);
+}
+
+.trustDivider {
+  width: 1px;
+  height: 28px;
+  background-color: rgba(255, 255, 255, 0.1);
+
+  @media (max-width: 860px) {
+    display: none;
+  }
+}
+
+// Main Multi-Column Content
+.mainFooter {
+  padding: 4.5rem 0 3.5rem;
+
+  @media (max-width: 768px) {
+    padding: 3.5rem 0 2.5rem;
+  }
+}
+
+.footerGrid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr 1fr 1fr;
+  gap: 2.5rem;
+
+  @media (max-width: 1100px) {
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2rem;
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem 1.5rem;
+  }
+
+  @media (max-width: 520px) {
+    grid-template-columns: 1fr;
+    gap: 2.25rem;
+  }
+}
+
+// Brand Column
+.brandCol {
+  display: flex;
+  flex-direction: column;
+
+  @media (max-width: 1100px) {
+    grid-column: 1 / -1;
+    max-width: 600px;
+  }
+}
+
+.logoLink {
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.logoText {
+  font-size: 1.55rem;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  color: #ffffff;
+}
+
+.logoAccent {
+  color: var(--secondaryColor);
+  font-weight: 700;
+  margin: 0 0.2rem;
+}
+
+.brandTagline {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--secondaryColor);
+  margin-bottom: 1rem;
+}
+
+.brandBio {
+  font-size: 0.88rem;
+  line-height: 1.65;
+  color: rgba(222, 217, 208, 0.72);
+  margin-bottom: 1.5rem;
+}
+
+.contactList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  margin-bottom: 1.5rem;
+}
+
+.contactItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-size: 0.84rem;
+  color: rgba(222, 217, 208, 0.78);
+  text-decoration: none;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: var(--secondaryColor);
+  }
+}
+
+.contactIcon {
+  color: var(--secondaryColor);
+  flex-shrink: 0;
+}
+
+.socialRow {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.socialLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.08);
+  color: #ded9d0;
+  text-decoration: none;
+  transition: background-color 0.25s ease, color 0.25s ease;
+
+  &:hover {
+    background-color: var(--primaryColor);
+    color: #ffffff;
+  }
+}
+
+// Link Columns
+.linkCol {
+  display: flex;
+  flex-direction: column;
+}
+
+.colHeading {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 0.02em;
+  margin-bottom: 1.25rem;
+  position: relative;
+  display: inline-block;
+
+  &::after {
+    content: "";
+    display: block;
+    width: 24px;
+    height: 2px;
+    background-color: var(--secondaryColor);
+    border-radius: 999px;
+    margin-top: 0.4rem;
+  }
+}
+
+.linkList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 0;
+  margin: 0;
+}
+
+.footerLink {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.86rem;
+  color: rgba(222, 217, 208, 0.7);
+  text-decoration: none;
+  transition: color 0.2s ease, transform 0.2s ease;
+
+  &:hover {
+    color: var(--secondaryColor);
+    transform: translateX(4px);
+  }
+}
+
+// Bottom Legal & Back to Top Bar
+.bottomBar {
+  padding: 1.5rem 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.bottomWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+
+  @media (max-width: 900px) {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+}
+
+.copyrightText {
+  font-size: 0.78rem;
+  color: rgba(222, 217, 208, 0.55);
+}
+
+.legalLinks {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+
+  @media (max-width: 900px) {
+    justify-content: center;
+  }
+}
+
+.legalLink {
+  font-size: 0.78rem;
+  color: rgba(222, 217, 208, 0.55);
+  text-decoration: none;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: var(--secondaryColor);
+  }
+}
+
+.legalDot {
+  font-size: 0.6rem;
+  color: rgba(222, 217, 208, 0.3);
+}
+
+// Back to Top Button
+.backToTopBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.45rem 1rem;
+  background-color: rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #ded9d0;
+  text-decoration: none;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  transition: background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+
+  &:hover {
+    background-color: var(--primaryColor);
+    border-color: var(--primaryColor);
+    color: #ffffff;
+
+    .backToTopIcon {
+      transform: translateY(-2px);
+    }
+  }
+}
+
+.backToTopIcon {
+  transition: transform 0.2s ease;
+}
