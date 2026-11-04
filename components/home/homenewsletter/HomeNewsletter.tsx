@@ -2,8 +2,10 @@
 
 import React, { useState } from "react";
 import { Mail, Check, Sparkles } from "lucide-react";
+import { motion } from "framer-motion";
 import SecHead from "@/components/boxes/sechead/SecHead";
 import Button from "@/components/ui/button/Button";
+import { mindfulEase } from "@/components/ui/animation/motionVariants";
 import styles from "./HomeNewsletter.module.scss";
 
 export default function HomeNewsletter() {
@@ -20,7 +22,13 @@ export default function HomeNewsletter() {
   return (
     <section id="newsletter" className={styles.newsletterSection} aria-label="Join our mindful community newsletter">
       <div className="container">
-        <div className={styles.newsletterCard}>
+        <motion.div
+          className={styles.newsletterCard}
+          initial={{ opacity: 0, scale: 0.96, y: 30 }}
+          whileInView={{ opacity: 1, scale: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.25 }}
+          transition={{ duration: 0.75, ease: mindfulEase }}
+        >
           {/* Section Header */}
           <SecHead
             eyebrow="JOIN OUR MINDFUL SANGHA"
@@ -31,7 +39,13 @@ export default function HomeNewsletter() {
           />
 
           {submitted ? (
-            <div className={styles.successMessage} role="status">
+            <motion.div
+              className={styles.successMessage}
+              role="status"
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.4, ease: mindfulEase }}
+            >
               <div className={styles.successIconBox}>
                 <Check size={24} />
               </div>
@@ -39,7 +53,7 @@ export default function HomeNewsletter() {
               <p className={styles.successDesc}>
                 We have sent a special welcome blessing and your 10% sacred code to <strong>{email}</strong>.
               </p>
-            </div>
+            </motion.div>
           ) : (
             <form onSubmit={handleSubmit} className={styles.form}>
               <div className={styles.inputWrapper}>
@@ -74,9 +88,8 @@ export default function HomeNewsletter() {
             <span className={styles.perkSeparator}>•</span>
             <span className={styles.perk}>✦ Zero Spam Policy</span>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
 }
-

@@ -4,30 +4,48 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import { motion } from "framer-motion";
 import SecHead from "@/components/boxes/sechead/SecHead";
 import Button from "@/components/ui/button/Button";
+import { sectionFadeIn, itemFadeUp, mindfulEase } from "@/components/ui/animation/motionVariants";
 import styles from "./HomeUpdate.module.scss";
 
 export default function HomeUpdate() {
   return (
     <section
-      id="product"
+      id="update"
       className={styles.updateSection}
       aria-label="Latest Updates and Featured Highlights"
     >
       <div className="container">
-        {/* Centered Section Header with Italic Hook Word */}
-        <SecHead
-          eyebrow="Special Updates"
-          title="Our Most-*Loved* Highlights"
-          description="Carefully curated for you — discover sacred spiritual essentials alongside transformative yoga immersions."
-          align="center"
-        />
+        {/* Animated Centered Section Header */}
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={sectionFadeIn}
+        >
+          <SecHead
+            eyebrow="Special Updates"
+            title="Our Most-*Loved* Highlights"
+            description="Carefully curated for you — discover sacred spiritual essentials alongside transformative yoga immersions."
+            align="center"
+          />
+        </motion.div>
 
         {/* Single Unified Master Box housing Top & Bottom Alternating Rows */}
-        <div className={styles.unifiedBox}>
+        <motion.div
+          className={styles.unifiedBox}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.15 }}
+          transition={{ duration: 0.75, ease: mindfulEase }}
+        >
           {/* Top Row: Left Text, Right Image (Yogi & Yathra Flash Sale) */}
-          <div className={`${styles.bannerRow} ${styles.topRow}`}>
+          <motion.div
+            className={`${styles.bannerRow} ${styles.topRow}`}
+            variants={itemFadeUp}
+          >
             <div className={styles.contentCol}>
               <div className={styles.eyebrow}>
                 <span className={styles.eyebrowDot} />
@@ -66,13 +84,16 @@ export default function HomeUpdate() {
                 className={styles.bannerImage}
               />
             </Link>
-          </div>
+          </motion.div>
 
           {/* Horizontal Divider Line between Top & Bottom rows */}
           <div className={styles.horizontalDivider} aria-hidden="true" />
 
           {/* Bottom Row: Left Image, Right Text (Yogify Live Workshop) */}
-          <div className={`${styles.bannerRow} ${styles.bottomRow}`}>
+          <motion.div
+            className={`${styles.bannerRow} ${styles.bottomRow}`}
+            variants={itemFadeUp}
+          >
             <Link
               href="/workshops"
               className={styles.imageCol}
@@ -110,8 +131,8 @@ export default function HomeUpdate() {
                 </Button>
               </div>
             </div>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   );

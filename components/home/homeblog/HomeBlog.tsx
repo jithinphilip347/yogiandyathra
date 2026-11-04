@@ -4,7 +4,9 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight, Calendar, Clock } from "lucide-react";
+import { motion } from "framer-motion";
 import SecHead from "@/components/boxes/sechead/SecHead";
+import { sectionFadeIn, staggerContainer, itemFadeUp } from "@/components/ui/animation/motionVariants";
 import styles from "./HomeBlog.module.scss";
 
 export interface BlogPost {
@@ -58,23 +60,36 @@ export default function HomeBlog() {
   return (
     <section id="blogs" className={styles.blogSection} aria-label="Wisdom Journal & Articles">
       <div className="container">
-        {/* Section Header */}
-        <SecHead
-          eyebrow="ANCIENT WISDOM & MODERN LIVING"
-          title="Insights, Teachings & *Vedic* Perspectives"
-          hookWord="Vedic"
-          description="Explore curated reflections on yogic philosophy, mindful daily rituals, sacred malas, and the art of inner stillness."
-          align="space-between"
-          action={{
-            label: "Explore Journal",
-            href: "/blog",
-          }}
-        />
+        {/* Animated Section Header */}
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={sectionFadeIn}
+        >
+          <SecHead
+            eyebrow="ANCIENT WISDOM & MODERN LIVING"
+            title="Insights, Teachings & *Vedic* Perspectives"
+            hookWord="Vedic"
+            description="Explore curated reflections on yogic philosophy, mindful daily rituals, sacred malas, and the art of inner stillness."
+            align="space-between"
+            action={{
+              label: "Explore Journal",
+              href: "/blog",
+            }}
+          />
+        </motion.div>
 
-        {/* 3-Column Editorial Grid */}
-        <div className={styles.grid}>
+        {/* 3-Column Editorial Grid with Stagger Entrance */}
+        <motion.div
+          className={styles.grid}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.15 }}
+          variants={staggerContainer}
+        >
           {posts.map((post) => (
-            <article key={post.id} className={styles.card}>
+            <motion.article key={post.id} className={styles.card} variants={itemFadeUp}>
               <Link href={post.href} className={styles.imageLink} aria-label={post.title}>
                 <div className={styles.imageWrapper}>
                   <Image
@@ -120,11 +135,10 @@ export default function HomeBlog() {
                   </Link>
                 </div>
               </div>
-            </article>
+            </motion.article>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
 }
-

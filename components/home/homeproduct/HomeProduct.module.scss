@@ -1,0 +1,34 @@
+// HomeProduct.module.scss - Mindful Sacred Collection Section
+
+.productSection {
+  width: 100%;
+  padding: 4.5rem 0 5rem;
+  background-color: #ffffff;
+
+  @media (max-width: 768px) {
+    padding: 3.5rem 0 4rem;
+  }
+}
+
+// 4-Column Responsive Grid matching ClassBox & HomeCourse layout
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.15rem;
+  width: 100%;
+  align-items: stretch;
+
+  // Medium screens / Tablets: 2 columns
+  @media (max-width: 1080px) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.15rem;
+  }
+
+  // Mobile: 1 column centered
+  @media (max-width: 580px) {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.25rem;
+    justify-items: center;
+  }
+}
+

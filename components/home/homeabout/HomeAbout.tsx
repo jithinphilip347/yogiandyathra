@@ -3,8 +3,10 @@
 import React from "react";
 import Image from "next/image";
 import { Sparkles, ShieldCheck, HeartHandshake, Compass, ArrowRight } from "lucide-react";
+import { motion } from "framer-motion";
 import SecHead from "@/components/boxes/sechead/SecHead";
 import Button from "@/components/ui/button/Button";
+import { sectionFadeIn, staggerContainer, itemFadeUp, mindfulEase } from "@/components/ui/animation/motionVariants";
 import styles from "./HomeAbout.module.scss";
 
 export default function HomeAbout() {
@@ -38,18 +40,31 @@ export default function HomeAbout() {
   return (
     <section id="about" className={styles.aboutSection} aria-label="About Yogi & Yathra and Yogify">
       <div className="container">
-        {/* Section Header */}
-        <SecHead
-          eyebrow="OUR PHILOSOPHY & STORY"
-          title="Bridging Timeless Vedic Heritage with *Conscious* Living"
-          hookWord="Conscious"
-          description="Born from a reverence for ancient yogic wisdom, Yogi & Yathra and Yogify unite mindful travel, sacred wellness essentials, and transformative classes into a single sanctuary."
-          align="center"
-        />
+        {/* Animated Section Header */}
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={sectionFadeIn}
+        >
+          <SecHead
+            eyebrow="OUR PHILOSOPHY & STORY"
+            title="Bridging Timeless Vedic Heritage with *Conscious* Living"
+            hookWord="Conscious"
+            description="Born from a reverence for ancient yogic wisdom, Yogi & Yathra and Yogify unite mindful travel, sacred wellness essentials, and transformative classes into a single sanctuary."
+            align="center"
+          />
+        </motion.div>
 
         <div className={styles.aboutContent}>
-          {/* Left Column: Visual Showcase with Floating Badge */}
-          <div className={styles.imageCol}>
+          {/* Left Column: Visual Showcase with Smooth Left Entrance */}
+          <motion.div
+            className={styles.imageCol}
+            initial={{ opacity: 0, x: -35 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.75, ease: mindfulEase }}
+          >
             <div className={styles.mainImageWrapper}>
               <Image
                 src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=900&q=80"
@@ -58,18 +73,30 @@ export default function HomeAbout() {
                 sizes="(max-width: 900px) 100vw, 540px"
                 className={styles.aboutImage}
               />
-              <div className={styles.floatingBadge}>
+              <motion.div
+                className={styles.floatingBadge}
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.3, ease: mindfulEase }}
+              >
                 <HeartHandshake size={20} className={styles.badgeIcon} />
                 <div className={styles.badgeText}>
                   <span className={styles.badgeTitle}>Rooted in Lineage</span>
                   <span className={styles.badgeSubtitle}>Yoga Alliance Certified</span>
                 </div>
-              </div>
+              </motion.div>
             </div>
-          </div>
+          </motion.div>
 
-          {/* Right Column: Narrative & Core Pillars */}
-          <div className={styles.textCol}>
+          {/* Right Column: Narrative & Core Pillars with Smooth Right Entrance */}
+          <motion.div
+            className={styles.textCol}
+            initial={{ opacity: 0, x: 35 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.75, ease: mindfulEase }}
+          >
             <div className={styles.storyBlock}>
               <h3 className={styles.storyHeading}>
                 More than a practice — a return to stillness.
@@ -79,28 +106,40 @@ export default function HomeAbout() {
               </p>
             </div>
 
-            {/* Core Pillars */}
-            <div className={styles.pillarsList}>
+            {/* Core Pillars Staggered */}
+            <motion.div
+              className={styles.pillarsList}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.2 }}
+              variants={staggerContainer}
+            >
               {pillars.map((pillar, idx) => (
-                <div key={idx} className={styles.pillarItem}>
+                <motion.div key={idx} className={styles.pillarItem} variants={itemFadeUp}>
                   <div className={styles.iconBox}>{pillar.icon}</div>
                   <div className={styles.pillarText}>
                     <h4 className={styles.pillarTitle}>{pillar.title}</h4>
                     <p className={styles.pillarDesc}>{pillar.description}</p>
                   </div>
-                </div>
+                </motion.div>
               ))}
-            </div>
+            </motion.div>
 
             {/* Stats Row */}
-            <div className={styles.statsRow}>
+            <motion.div
+              className={styles.statsRow}
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.6, ease: mindfulEase }}
+            >
               {stats.map((stat, idx) => (
                 <div key={idx} className={styles.statItem}>
                   <span className={styles.statValue}>{stat.value}</span>
                   <span className={styles.statLabel}>{stat.label}</span>
                 </div>
               ))}
-            </div>
+            </motion.div>
 
             {/* Action CTA */}
             <div className={styles.actionRow}>
@@ -113,10 +152,9 @@ export default function HomeAbout() {
                 Discover Our Heritage
               </Button>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>
   );
 }
-

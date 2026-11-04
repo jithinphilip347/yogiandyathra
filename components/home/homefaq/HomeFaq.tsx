@@ -2,8 +2,10 @@
 
 import React, { useState } from "react";
 import { ChevronDown, MessageCircleQuestion } from "lucide-react";
+import { motion } from "framer-motion";
 import SecHead from "@/components/boxes/sechead/SecHead";
 import Button from "@/components/ui/button/Button";
+import { sectionFadeIn, staggerContainer, itemFadeUp } from "@/components/ui/animation/motionVariants";
 import styles from "./HomeFaq.module.scss";
 
 export interface FaqItem {
@@ -68,24 +70,38 @@ export default function HomeFaq() {
   return (
     <section id="faq" className={styles.faqSection} aria-label="Frequently Asked Questions">
       <div className="container">
-        {/* Section Header */}
-        <SecHead
-          eyebrow="FREQUENTLY ASKED QUESTIONS"
-          title="Everything You Need to *Know* Before You Begin"
-          hookWord="Know"
-          description="Clear answers about our certified Vedic essentials, live workshop accessibility, and worldwide deliveries."
-          align="center"
-        />
+        {/* Animated Section Header */}
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={sectionFadeIn}
+        >
+          <SecHead
+            eyebrow="FREQUENTLY ASKED QUESTIONS"
+            title="Everything You Need to *Know* Before You Begin"
+            hookWord="Know"
+            description="Clear answers about our certified Vedic essentials, live workshop accessibility, and worldwide deliveries."
+            align="center"
+          />
+        </motion.div>
 
-        {/* Accordion Container */}
+        {/* Accordion Container with Stagger Entrance */}
         <div className={styles.accordionWrapper}>
-          <div className={styles.faqList}>
+          <motion.div
+            className={styles.faqList}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.15 }}
+            variants={staggerContainer}
+          >
             {faqs.map((item, idx) => {
               const isOpen = openIndex === idx;
               return (
-                <div
+                <motion.div
                   key={item.id}
                   className={`${styles.faqItem} ${isOpen ? styles.open : ""}`}
+                  variants={itemFadeUp}
                 >
                   <button
                     type="button"
@@ -112,13 +128,19 @@ export default function HomeFaq() {
                       <p className={styles.answerText}>{item.answer}</p>
                     </div>
                   </div>
-                </div>
+                </motion.div>
               );
             })}
-          </div>
+          </motion.div>
 
           {/* Need More Assistance Box */}
-          <div className={styles.supportBox}>
+          <motion.div
+            className={styles.supportBox}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.6 }}
+          >
             <div className={styles.supportInfo}>
               <MessageCircleQuestion size={26} className={styles.supportIcon} />
               <div>
@@ -135,10 +157,9 @@ export default function HomeFaq() {
             >
               Contact Our Sangha
             </Button>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>
   );
 }
-

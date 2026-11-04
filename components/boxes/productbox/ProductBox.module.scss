@@ -1,0 +1,196 @@
+// ProductBox.module.scss - Mindful Sacred Store Product Card
+// Follows --font-inter from app/layout.tsx and colors from app/globals.scss
+
+.cardWrapper {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  font-family: var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background-color: #f7f5ee;
+  border-radius: 14px;
+  padding: 0.75rem;
+  border: none;
+  box-shadow: none;
+  display: flex;
+  flex-direction: column;
+  transition: background-color 0.25s ease;
+
+  &.skeletonCard {
+    pointer-events: none;
+    cursor: default;
+    border: none;
+    box-shadow: none;
+
+    &:hover {
+      transform: none;
+      box-shadow: none;
+    }
+  }
+
+  // Purely flat hover state - NO transform translateY, NO box-shadow
+  &:hover {
+    background-color: #f1ede3;
+    transform: none;
+    box-shadow: none;
+
+    .productImage {
+      transform: scale(1.03);
+    }
+
+    .titleLink {
+      color: var(--primaryColor);
+    }
+  }
+}
+
+// Top Image Container
+.imageContainer {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: #e8e5da;
+  border: none;
+  box-shadow: none;
+
+  @media (max-width: 480px) {
+    height: 190px;
+  }
+}
+
+.imageLink {
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.productImage {
+  object-fit: cover;
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+// Consecrated Badge (e.g. Bestseller / Sacred Sale)
+.badge {
+  position: absolute;
+  top: 0.6rem;
+  left: 0.6rem;
+  z-index: 2;
+  background-color: #ffffff;
+  color: var(--primaryColor);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.25rem 0.65rem;
+  border-radius: 999px;
+  border: none;
+  box-shadow: none;
+}
+
+// Content Section
+.content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 0.95rem 0.25rem 0.25rem;
+}
+
+.category {
+  font-size: 0.62rem;
+  font-weight: 700;
+  color: var(--primaryColor);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.35rem;
+}
+
+.title {
+  font-size: 1.05rem;
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: -0.015em;
+  margin-bottom: 0.45rem;
+  min-height: 2.7rem;
+}
+
+.titleLink {
+  color: var(--textColor);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+// Rating Row
+.ratingRow {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-bottom: 0.95rem;
+}
+
+.stars {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.15rem;
+}
+
+.starFilled {
+  color: var(--secondaryColor);
+}
+
+.starEmpty {
+  color: rgba(0, 0, 0, 0.15);
+}
+
+.reviewsCount {
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--textColor);
+  opacity: 0.55;
+}
+
+// Footer Row: Price Section
+.footerRow {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-top: auto;
+  padding-top: 0.65rem;
+  border-top: 1px dashed rgba(0, 0, 0, 0.09);
+}
+
+.priceCol {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  width: 100%;
+}
+
+.priceValues {
+  display: flex;
+  align-items: baseline;
+  gap: 0.45rem;
+}
+
+.currentPrice {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--primaryColor);
+  letter-spacing: -0.02em;
+}
+
+.originalPrice {
+  font-size: 0.8rem;
+  color: var(--textColor);
+  opacity: 0.45;
+  text-decoration: line-through;
+}
+
+.discountBadge {
+  font-size: 0.62rem;
+  font-weight: 700;
+  color: var(--primaryColor);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}

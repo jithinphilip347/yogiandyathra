@@ -1,6 +1,7 @@
 import { Suspense } from "react";
 import HomeHero from "@/components/home/homehero/HomeHero";
 import HomeUpdate from "@/components/home/homeupdate/HomeUpdate";
+import HomeProduct from "@/components/home/homeproduct/HomeProduct";
 import HomeCourse from "@/components/home/homecourse/HomeCourse";
 import HomeAbout from "@/components/home/homeabout/HomeAbout";
 import HomeTestimonial from "@/components/home/hometestimonial/HomeTestimonial";
@@ -19,22 +20,25 @@ export default function Home() {
       {/* 2. Highlights & Promo: Flash sale & latest live workshop */}
       <HomeUpdate />
 
-      {/* 3. Workshops & Masterclasses: 4-item grid with ClassBox */}
+      {/* 3. Sacred Store Featured Products: 4-item grid with ProductBox */}
+      <HomeProduct />
+
+      {/* 4. Workshops & Masterclasses: 4-item grid with ClassBox */}
       <HomeCourse />
 
-      {/* 4. Philosophy & Lineage: Vedic heritage, 3 core pillars, stats */}
+      {/* 5. Philosophy & Lineage: Vedic heritage, 3 core pillars, stats */}
       <HomeAbout />
 
-      {/* 5. Voices of Sangha: Practitioner & seeker verified testimonials */}
+      {/* 6. Voices of Sangha: Practitioner & seeker verified testimonials */}
       <HomeTestimonial />
 
-      {/* 6. Frequently Asked Questions: Interactive accordion */}
+      {/* 7. Frequently Asked Questions: Interactive accordion */}
       <HomeFaq />
 
-      {/* 7. Wisdom Journal: Ancient teachings & mindful perspectives */}
+      {/* 8. Wisdom Journal: Ancient teachings & mindful perspectives */}
       <HomeBlog />
 
-      {/* 8. Mindful Circular: Join the Sangha newsletter */}
+      {/* 9. Mindful Circular: Join the Sangha newsletter */}
       <HomeNewsletter />
     </main>
   );

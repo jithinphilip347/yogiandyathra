@@ -3,7 +3,9 @@
 import React from "react";
 import Image from "next/image";
 import { Star, CheckCircle, Quote } from "lucide-react";
+import { motion } from "framer-motion";
 import SecHead from "@/components/boxes/sechead/SecHead";
+import { sectionFadeIn, staggerContainer, itemFadeUp } from "@/components/ui/animation/motionVariants";
 import styles from "./HomeTestimonial.module.scss";
 
 export interface TestimonialItem {
@@ -53,19 +55,32 @@ export default function HomeTestimonial() {
   return (
     <section id="testimonial" className={styles.testimonialSection} aria-label="Seeker & Student Testimonials">
       <div className="container">
-        {/* Section Header */}
-        <SecHead
-          eyebrow="VOICES OF OUR SANGHA"
-          title="Stories of Healing, Stillness & *Mindful* Living"
-          hookWord="Mindful"
-          description="Authentic experiences from conscious seekers and students who practice with our guidance and embrace our sacred essentials."
-          align="center"
-        />
+        {/* Animated Section Header */}
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={sectionFadeIn}
+        >
+          <SecHead
+            eyebrow="VOICES OF OUR SANGHA"
+            title="Stories of Healing, Stillness & *Mindful* Living"
+            hookWord="Mindful"
+            description="Authentic experiences from conscious seekers and students who practice with our guidance and embrace our sacred essentials."
+            align="center"
+          />
+        </motion.div>
 
-        {/* Testimonials Grid */}
-        <div className={styles.grid}>
+        {/* Testimonials Grid with Cascading Stagger Entrance */}
+        <motion.div
+          className={styles.grid}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.15 }}
+          variants={staggerContainer}
+        >
           {testimonials.map((item) => (
-            <article key={item.id} className={styles.card}>
+            <motion.article key={item.id} className={styles.card} variants={itemFadeUp}>
               <div className={styles.cardTop}>
                 {/* 5-Star Rating */}
                 <div className={styles.stars} aria-label={`Rating: ${item.rating} out of 5 stars`}>
@@ -104,9 +119,9 @@ export default function HomeTestimonial() {
                   <span className={styles.authorRole}>{item.role}</span>
                 </div>
               </div>
-            </article>
+            </motion.article>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
