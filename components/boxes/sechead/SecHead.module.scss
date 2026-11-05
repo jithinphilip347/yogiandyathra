@@ -10,77 +10,8 @@
   text-align: left;
 }
 
-@media (max-width: 1024px) {
-  .secHead {
-    margin-bottom: 2.25rem;
-  }
-}
-
-@media (max-width: 768px) {
-  .secHead {
-    margin-bottom: 2rem;
-  }
-
-  .title {
-    font-size: 1.85rem;
-  }
-
-  .spaceBetween {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 1.25rem;
-  }
-
-  .actionCol {
-    align-self: flex-start;
-    margin-top: 0.5rem;
-    margin-bottom: 0;
-  }
-}
-
-@media (max-width: 480px) {
-  .secHead {
-    margin-bottom: 1.75rem;
-  }
-
-  .title {
-    font-size: 1.65rem;
-  }
-
-  .eyebrowText {
-    font-size: 0.68rem;
-  }
-
-  .description {
-    font-size: 0.88rem;
-  }
-}
-
-@media (max-width: 420px) {
-  .secHead {
-    margin-bottom: 1.5rem;
-  }
-
-  .title {
-    font-size: 1.48rem;
-  }
-
-  .eyebrowText {
-    font-size: 0.65rem;
-    letter-spacing: 0.1em;
-  }
-
-  .description {
-    font-size: 0.84rem;
-    line-height: 1.55;
-  }
-
-  .actionLink {
-    font-size: 0.85rem;
-  }
-}
-
 .textGroup {
+  width: 100%;
   max-width: 680px;
   display: flex;
   flex-direction: column;
@@ -89,7 +20,7 @@
 // Eyebrow badge
 .eyebrow {
   display: inline-flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 0.5rem;
   margin-bottom: 0.75rem;
 }
@@ -100,6 +31,7 @@
   border-radius: 50%;
   background-color: var(--secondaryColor);
   flex-shrink: 0;
+  margin-top: 0.38em;
 }
 
 .eyebrowText {
@@ -108,6 +40,7 @@
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--primaryColor);
+  line-height: 1.4;
 }
 
 // Main Title
@@ -226,3 +159,85 @@
   }
 }
 
+// ============================================
+// RESPONSIVE BREAKPOINTS (STRICT REQUIREMENT)
+// ============================================
+
+@media (max-width: 1024px) {
+  .secHead {
+    margin-bottom: 2.25rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .secHead {
+    margin-bottom: 2rem;
+  }
+
+  .spaceBetween {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.25rem;
+
+    .textGroup {
+      max-width: 100%;
+      width: 100%;
+    }
+
+    .actionCol {
+      align-self: flex-start;
+      margin-top: 0.25rem;
+      margin-bottom: 0;
+    }
+  }
+
+  .title {
+    font-size: 1.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .secHead {
+    margin-bottom: 1.75rem;
+  }
+
+  .title {
+    font-size: 1.65rem;
+  }
+
+  .eyebrowText {
+    font-size: 0.68rem;
+  }
+
+  .description {
+    font-size: 0.88rem;
+  }
+
+  .spaceBetween {
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 420px) {
+  .secHead {
+    margin-bottom: 1.5rem;
+  }
+
+  .title {
+    font-size: 1.48rem;
+  }
+
+  .eyebrowText {
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+  }
+
+  .description {
+    font-size: 0.84rem;
+    line-height: 1.55;
+  }
+
+  .actionLink {
+    font-size: 0.85rem;
+  }
+}

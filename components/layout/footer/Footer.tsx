@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import {
   Mail,
   Phone,
@@ -25,59 +26,6 @@ function InstagramIcon({ size = 17 }: { size?: number }) {
       <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
       <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
       <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
-    </svg>
-  );
-}
-
-function YoutubeIcon({ size = 17 }: { size?: number }) {
-  return (
-    <svg
-      width={size}
-      height={size}
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17" />
-      <polygon points="10 15 15 12 10 9 10 15" fill="currentColor" />
-    </svg>
-  );
-}
-
-function FacebookIcon({ size = 17 }: { size?: number }) {
-  return (
-    <svg
-      width={size}
-      height={size}
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
-    </svg>
-  );
-}
-
-function TwitterIcon({ size = 17 }: { size?: number }) {
-  return (
-    <svg
-      width={size}
-      height={size}
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M4 4l11.733 16h4.267l-11.733 -16z" />
-      <path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772" />
     </svg>
   );
 }
@@ -191,40 +139,13 @@ export default function Footer() {
               {/* Social Channels */}
               <div className={styles.socialRow}>
                 <a
-                  href="https://instagram.com"
+                  href="https://www.instagram.com/yogify.yy/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className={styles.socialLink}
-                  aria-label="Follow Yogi & Yathra on Instagram"
+                  aria-label="Follow Yogify on Instagram"
                 >
                   <InstagramIcon size={17} />
-                </a>
-                <a
-                  href="https://youtube.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={styles.socialLink}
-                  aria-label="Subscribe on YouTube"
-                >
-                  <YoutubeIcon size={17} />
-                </a>
-                <a
-                  href="https://facebook.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={styles.socialLink}
-                  aria-label="Follow on Facebook"
-                >
-                  <FacebookIcon size={17} />
-                </a>
-                <a
-                  href="https://twitter.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={styles.socialLink}
-                  aria-label="Follow on X"
-                >
-                  <TwitterIcon size={17} />
                 </a>
               </div>
             </div>
@@ -296,13 +217,15 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Bottom Bar: Copyright, Legal & Back to Top */}
+      {/* Bottom Bar: Copyright, Legal & Developer Credits */}
       <div className={styles.bottomBar}>
         <div className="container">
           <div className={styles.bottomWrapper}>
-            <p className={styles.copyrightText}>
-              © {currentYear} Yogi & Yathra & Yogify. Consecrated with mindful intention. All rights reserved.
-            </p>
+            <div className={styles.copyrightCol}>
+              <p className={styles.copyrightText}>
+                © {currentYear} Yogi &amp; Yathra. All rights reserved.
+              </p>
+            </div>
 
             <div className={styles.legalLinks}>
               <Link href="/#about" className={styles.legalLink}>
@@ -310,16 +233,27 @@ export default function Footer() {
               </Link>
               <span className={styles.legalDot}>•</span>
               <Link href="/#about" className={styles.legalLink}>
-                Terms of Service
+                Terms &amp; Conditions
               </Link>
-              <span className={styles.legalDot}>•</span>
-              <Link href="/#about" className={styles.legalLink}>
-                Shipping & Delivery
-              </Link>
-              <span className={styles.legalDot}>•</span>
-              <Link href="/#about" className={styles.legalLink}>
-                Mindful Guarantee
-              </Link>
+            </div>
+
+            <div className={styles.developerCol}>
+              <a
+                href="https://varixialabs.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.developerLink}
+                aria-label="Developed by Varixia Labs"
+              >
+                <span className={styles.developerText}>Developed by</span>
+                <Image
+                  src="/images/design-logo.png"
+                  alt="VATL - Varixia Labs"
+                  width={48}
+                  height={28}
+                  className={styles.vatlLogo}
+                />
+              </a>
             </div>
           </div>
         </div>

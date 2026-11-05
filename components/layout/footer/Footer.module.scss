@@ -249,7 +249,7 @@
   }
 }
 
-// Bottom Legal & Back to Top Bar
+// Bottom Legal & Developer Credits Bar
 .bottomBar {
   padding: 1.5rem 0;
   border-top: 1px solid rgba(255, 255, 255, 0.07);
@@ -260,27 +260,44 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1.25rem;
+  gap: 1.5rem;
 
-  @media (max-width: 900px) {
+  @media (max-width: 768px) {
     flex-direction: column;
     text-align: center;
-    gap: 1rem;
+    gap: 1.15rem;
+  }
+}
+
+.copyrightCol {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  @media (max-width: 768px) {
+    justify-content: center;
   }
 }
 
 .copyrightText {
   font-size: 0.78rem;
   color: rgba(222, 217, 208, 0.55);
+
+  @media (max-width: 420px) {
+    font-size: 0.74rem;
+  }
 }
 
 .legalLinks {
+  flex: 1;
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 0.75rem;
   flex-wrap: wrap;
 
-  @media (max-width: 900px) {
+  @media (max-width: 768px) {
     justify-content: center;
   }
 }
@@ -294,6 +311,10 @@
   &:hover {
     color: var(--secondaryColor);
   }
+
+  @media (max-width: 420px) {
+    font-size: 0.74rem;
+  }
 }
 
 .legalDot {
@@ -301,32 +322,49 @@
   color: rgba(222, 217, 208, 0.3);
 }
 
-// Back to Top Button
-.backToTopBtn {
+.developerCol {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  @media (max-width: 768px) {
+    justify-content: center;
+  }
+}
+
+.developerLink {
   display: inline-flex;
   align-items: center;
-  gap: 0.45rem;
-  padding: 0.45rem 1rem;
-  background-color: rgba(255, 255, 255, 0.08);
-  border-radius: 999px;
-  font-size: 0.78rem;
-  font-weight: 600;
-  color: #ded9d0;
+  gap: 0.55rem;
   text-decoration: none;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  transition: background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+  transition: opacity 0.2s ease;
 
   &:hover {
-    background-color: var(--primaryColor);
-    border-color: var(--primaryColor);
-    color: #ffffff;
+    opacity: 0.85;
 
-    .backToTopIcon {
-      transform: translateY(-2px);
+    .vatlLogo {
+      transform: scale(1.05);
     }
   }
 }
 
-.backToTopIcon {
+.developerText {
+  font-size: 0.78rem;
+  color: rgba(222, 217, 208, 0.55);
+
+  @media (max-width: 420px) {
+    font-size: 0.74rem;
+  }
+}
+
+.vatlLogo {
+  height: 22px;
+  width: auto;
+  object-fit: contain;
   transition: transform 0.2s ease;
+
+  @media (max-width: 420px) {
+    height: 19px;
+  }
 }

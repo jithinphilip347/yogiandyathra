@@ -1,3 +1,5 @@
+// HomeHero.module.scss - Grand Dual Slide Hero Entrance
+
 .heroSection {
   position: relative;
   width: 100%;
@@ -5,14 +7,9 @@
   height: 78vh;
   max-height: 710px;
   display: flex;
-  align-items: center;
+  flex-direction: column;
   overflow: hidden;
   background-color: #0c0a08;
-
-  @media (max-width: 768px) {
-    min-height: 520px;
-    height: auto;
-  }
 }
 
 .swiper,
@@ -20,16 +17,24 @@
   position: relative;
   width: 100%;
   height: 100%;
-  min-height: inherit;
+  flex: 1 1 100%;
   display: flex;
-  align-items: center;
+  flex-direction: column;
+}
+
+:global(.swiper-wrapper) {
+  width: 100%;
+  height: 100% !important;
+  flex: 1 1 100%;
+  display: flex;
 }
 
 .slide {
   position: relative;
   width: 100%;
-  height: 100%;
-  min-height: inherit;
+  height: 100% !important;
+  min-height: 100%;
+  flex: 1 0 100%;
   display: flex;
   align-items: center;
   overflow: hidden;
@@ -39,7 +44,10 @@
 
 .imageContainer {
   position: absolute;
-  inset: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   width: 100%;
   height: 100%;
   z-index: 0;
@@ -59,7 +67,12 @@
 // Natural Vignette Overlay - dark on left for text, balanced on right for vertical glass cards
 .overlay {
   position: absolute;
-  inset: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
   z-index: 1;
   background: linear-gradient(
     90deg,
@@ -68,15 +81,6 @@
     rgba(10, 8, 7, 0.38) 75%,
     rgba(10, 8, 7, 0.62) 100%
   );
-
-  @media (max-width: 768px) {
-    background: linear-gradient(
-      180deg,
-      rgba(10, 8, 7, 0.88) 0%,
-      rgba(10, 8, 7, 0.72) 55%,
-      rgba(10, 8, 7, 0.9) 100%
-    );
-  }
 }
 
 .heroRow {
@@ -98,7 +102,6 @@
   text-align: left;
   padding: 3rem 0;
 }
-
 
 .meta {
   display: inline-flex;
@@ -156,7 +159,7 @@
   color: var(--secondaryColor);
 }
 
-// Main Title H1 - 2 distinct lines
+// Main Title H1
 .title {
   width: 100%;
   font-size: clamp(2.5rem, 4.2vw, 3.75rem);
@@ -171,13 +174,9 @@
 .titleLine {
   display: block;
   white-space: nowrap;
-
-  @media (max-width: 768px) {
-    white-space: normal;
-  }
 }
 
-// Description - exactly 2 lines
+// Description
 .description {
   font-size: clamp(0.95rem, 1.1vw, 1.05rem);
   line-height: 1.65;
@@ -194,12 +193,6 @@
   flex-wrap: wrap;
   align-items: center;
   gap: 1rem;
-
-  @media (max-width: 480px) {
-    flex-direction: column;
-    width: 100%;
-    align-items: stretch;
-  }
 }
 
 // Right Column: Single Featured Card matching user's reference design
@@ -208,36 +201,6 @@
   width: clamp(320px, 26vw, 360px);
   flex-shrink: 0;
   flex-direction: column;
-
-  @media (max-width: 1024px) {
-    display: none;
-  }
-}
-
-@media (max-width: 420px) {
-  .heroSection {
-    min-height: 480px;
-  }
-
-  .content {
-    padding: 2rem 0;
-  }
-
-  .title {
-    font-size: 2.1rem;
-    margin-bottom: 1rem;
-  }
-
-  .description {
-    font-size: 0.88rem;
-    line-height: 1.55;
-    margin-bottom: 1.75rem;
-  }
-
-  .eyebrow {
-    font-size: 0.65rem;
-    padding: 0.28rem 0.75rem;
-  }
 }
 
 .featureCard {
@@ -341,4 +304,159 @@
 
 .cardBtnIcon {
   stroke-width: 2.2;
+}
+
+// ============================================
+// RESPONSIVE BREAKPOINTS (STRICT REQUIREMENT)
+// ============================================
+
+@media (max-width: 1024px) {
+  .heroSection {
+    min-height: 540px;
+    height: 72vh;
+    max-height: 640px;
+  }
+
+  .featureCardsCol {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .heroSection {
+    height: auto;
+    min-height: unset;
+    max-height: unset;
+    background-color: transparent;
+  }
+
+  .swiper,
+  .staticHero,
+  :global(.swiper-wrapper) {
+    height: auto !important;
+    min-height: unset !important;
+  }
+
+  .slide {
+    display: block;
+    height: auto !important;
+    min-height: unset !important;
+  }
+
+  .bgImage {
+    object-position: center center;
+  }
+
+  .overlay {
+    background: linear-gradient(
+      180deg,
+      rgba(10, 8, 7, 0.62) 0%,
+      rgba(10, 8, 7, 0.45) 50%,
+      rgba(10, 8, 7, 0.45) 100%
+    );
+  }
+
+  .content {
+    padding: 3.25rem 0 3rem;
+  }
+
+  .meta {
+    margin-bottom: 0.65rem;
+  }
+
+  .eyebrow {
+    font-size: 0.68rem;
+    padding: 0.28rem 0.75rem;
+    margin-bottom: 0.85rem;
+  }
+
+  .title {
+    font-size: 2.2rem;
+    line-height: 1.18;
+    margin-bottom: 0.85rem;
+  }
+
+  .titleLine {
+    white-space: normal;
+  }
+
+  .description {
+    font-size: 0.95rem;
+    line-height: 1.55;
+    margin-bottom: 1.4rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .heroSection {
+    height: auto;
+    min-height: unset;
+    max-height: unset;
+  }
+
+  .content {
+    padding: 2.75rem 0 2.5rem;
+  }
+
+  .meta {
+    margin-bottom: 0.55rem;
+  }
+
+  .eyebrow {
+    font-size: 0.65rem;
+    padding: 0.26rem 0.7rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .title {
+    font-size: 1.85rem;
+    line-height: 1.2;
+    margin-bottom: 0.75rem;
+  }
+
+  .description {
+    font-size: 0.88rem;
+    line-height: 1.5;
+    margin-bottom: 1.25rem;
+  }
+
+  .btnGroup {
+    flex-direction: column;
+    width: 100%;
+    align-items: stretch;
+  }
+}
+
+@media (max-width: 420px) {
+  .heroSection {
+    height: auto;
+    min-height: unset;
+    max-height: unset;
+  }
+
+  .content {
+    padding: 2.25rem 0 2rem;
+  }
+
+  .meta {
+    margin-bottom: 0.45rem;
+  }
+
+  .eyebrow {
+    font-size: 0.62rem;
+    padding: 0.24rem 0.65rem;
+    margin-bottom: 0.65rem;
+  }
+
+  .title {
+    font-size: 1.68rem;
+    line-height: 1.22;
+    margin-bottom: 0.65rem;
+  }
+
+  .description {
+    font-size: 0.84rem;
+    line-height: 1.48;
+    margin-bottom: 1.15rem;
+  }
 }

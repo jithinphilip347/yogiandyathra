@@ -35,8 +35,8 @@ export default function Home() {
       {/* 7. Frequently Asked Questions: Interactive accordion */}
       <HomeFaq />
 
-      {/* 8. Wisdom Journal: Ancient teachings & mindful perspectives */}
-      <HomeBlog />
+      {/* 8. Wisdom Journal: Ancient teachings & mindful perspectives (commented out as requested) */}
+      {/* <HomeBlog /> */}
 
       {/* 9. Mindful Circular: Join the Sangha newsletter */}
       <HomeNewsletter />

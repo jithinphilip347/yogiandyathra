@@ -23,7 +23,7 @@ const defaultProducts: ProductItem[] = [
     reviewsCount: 142,
     image: "/images/banner/banner-1.webp",
     badge: "Bestseller",
-    href: "/product/rudraksha-mala",
+    href: "https://www.yogiandyathra.com/products",
   },
   {
     id: "prod-2",
@@ -36,7 +36,7 @@ const defaultProducts: ProductItem[] = [
     reviewsCount: 96,
     image: "/images/products/rudraksha-bracelet.jpg",
     badge: "Consecrated",
-    href: "/product/gold-rudraksha-bracelet",
+    href: "https://www.yogiandyathra.com/products",
   },
   {
     id: "prod-3",
@@ -49,7 +49,7 @@ const defaultProducts: ProductItem[] = [
     reviewsCount: 78,
     image: "https://images.unsplash.com/photo-1602928321679-560bb453f190?auto=format&fit=crop&w=800&q=80",
     badge: "Handmade",
-    href: "/product/copper-tamra-carafe",
+    href: "https://www.yogiandyathra.com/products",
   },
   {
     id: "prod-4",
@@ -62,7 +62,7 @@ const defaultProducts: ProductItem[] = [
     reviewsCount: 114,
     image: "https://images.unsplash.com/photo-1545205597-3d9d02c29597?auto=format&fit=crop&w=800&q=80",
     badge: "Energized",
-    href: "/product/sri-yantra-plate",
+    href: "https://www.yogiandyathra.com/products",
   },
 ];
 
@@ -101,7 +101,7 @@ export default function HomeProduct({
             align="space-between"
             action={{
               label: "Explore Full Collection",
-              href: "/product",
+              href: "https://www.yogiandyathra.com/products",
             }}
           />
         </motion.div>

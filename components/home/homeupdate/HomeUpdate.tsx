@@ -66,7 +66,7 @@ export default function HomeUpdate() {
                 <Button
                   variant="primary"
                   size="md"
-                  href="/shop"
+                  href="https://www.yogiandyathra.com/"
                   icon={<ArrowRight size={16} />}
                 >
                   View Full Collection
@@ -75,7 +75,9 @@ export default function HomeUpdate() {
             </div>
 
             <Link
-              href="/shop"
+              href="https://www.yogiandyathra.com/"
+              target="_blank"
+              rel="noopener noreferrer"
               className={styles.imageCol}
               aria-label="View Spiritual Accessories collection"
             >

@@ -59,7 +59,7 @@ export default function ProductBox({
   image = "/images/banner/banner-1.webp",
   imageAlt,
   badge = "Bestseller",
-  href = "/shop",
+  href = "https://www.yogiandyathra.com/products",
   className = "",
   isLoading = false,
 }: ProductBoxProps) {
@@ -71,7 +71,13 @@ export default function ProductBox({
     <article className={`${styles.cardWrapper} ${className}`}>
       {/* Top Image Section */}
       <div className={styles.imageContainer}>
-        <Link href={href} className={styles.imageLink} aria-label={title}>
+        <Link
+          href={href}
+          className={styles.imageLink}
+          aria-label={title}
+          target={href.startsWith("http") ? "_blank" : undefined}
+          rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
+        >
           <Image
             src={image}
             alt={imageAlt || title}
@@ -90,7 +96,12 @@ export default function ProductBox({
         <span className={styles.category}>{category}</span>
 
         <h3 className={styles.title}>
-          <Link href={href} className={styles.titleLink}>
+          <Link
+            href={href}
+            className={styles.titleLink}
+            target={href.startsWith("http") ? "_blank" : undefined}
+            rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
+          >
             {title}
           </Link>
         </h3>

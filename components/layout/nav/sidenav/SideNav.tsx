@@ -15,7 +15,6 @@ import {
   Mail,
   ArrowRight,
   Phone,
-  Clock,
 } from "lucide-react";
 import styles from "./SideNav.module.scss";
 
@@ -38,7 +37,7 @@ export const sideNavSections: {
   { label: "About", href: "/#about", targetId: "about", icon: Heart },
   // { label: "Reviews", href: "/#testimonial", targetId: "testimonial", icon: Star },
   { label: "FAQ", href: "/#faq", targetId: "faq", icon: HelpCircle },
-  { label: "Blogs", href: "/#blogs", targetId: "blogs", icon: Newspaper },
+  // { label: "Blogs", href: "/#blogs", targetId: "blogs", icon: Newspaper },
   { label: "Newsletter", href: "/#newsletter", targetId: "newsletter", icon: Mail },
 ];
 
@@ -139,7 +138,6 @@ export default function SideNav({
                     </div>
 
                     <div className={styles.linkRight}>
-                      <span className={styles.activeIndicatorDot} />
                       <ArrowRight size={15} className={styles.arrowIcon} />
                     </div>
                   </Link>
@@ -149,7 +147,7 @@ export default function SideNav({
           </ul>
         </div>
 
-        {/* Drawer Footer: Quick Sangha Contact & Timings */}
+        {/* Drawer Footer: Quick Sangha Contact */}
         <div className={styles.footer}>
           <a href="tel:+917994219909" className={styles.contactItem}>
             <Phone size={16} className={styles.contactIcon} />
@@ -159,12 +157,6 @@ export default function SideNav({
             <Mail size={16} className={styles.contactIcon} />
             <span>yy.yogify@gmail.com</span>
           </a>
-          <div className={styles.contactItem}>
-            <Clock size={16} className={styles.contactIcon} />
-            <span className={styles.timingText}>
-              Ashram Hours: 6:00 AM to 8:00 PM (Daily)
-            </span>
-          </div>
         </div>
       </aside>
     </>

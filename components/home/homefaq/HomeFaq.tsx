@@ -153,9 +153,9 @@ export default function HomeFaq() {
             <Button
               variant="outline"
               size="sm"
-              href="/contact"
+              href="#newsletter"
             >
-              Contact Our Sangha
+              Contact Our Community
             </Button>
           </motion.div>
         </div>

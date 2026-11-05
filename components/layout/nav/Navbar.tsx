@@ -14,7 +14,7 @@ export const navLinks: NavItem[] = [
   { label: "About", href: "/#about", targetId: "about" },
   // { label: "Reviews", href: "/#testimonial", targetId: "testimonial" },
   { label: "FAQ", href: "/#faq", targetId: "faq" },
-  { label: "Blogs", href: "/#blogs", targetId: "blogs" },
+  // { label: "Blogs", href: "/#blogs", targetId: "blogs" },
   { label: "Contact", href: "/#newsletter", targetId: "newsletter" },
 ];
 

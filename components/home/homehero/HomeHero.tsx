@@ -51,7 +51,7 @@ const slides: HeroSlide[] = [
       "Discover thoughtfully curated yoga essentials and wellness products that bring peace, balance, and mindful living into everyday life.",
     primaryBtn: {
       label: "Explore Collection",
-      href: "/shop",
+      href: "https://www.yogiandyathra.com/",
     },
     image: "/images/banner/banner-1.webp",
     imageAlt: "Sacred Rudraksha mala prayer beads for yoga and meditation",
@@ -59,7 +59,7 @@ const slides: HeroSlide[] = [
       title: "Rudraksha Mala",
       info: "Certified Authentic • ₹1,299",
       image: "/images/banner/banner-1.webp",
-      href: "/shop",
+      href: "https://www.yogiandyathra.com/",
     },
   },
   {
@@ -181,6 +181,8 @@ export default function HomeHero() {
                     <Link
                       href={slide.card.href}
                       className={styles.featureCard}
+                      target={slide.card.href.startsWith("http") ? "_blank" : undefined}
+                      rel={slide.card.href.startsWith("http") ? "noopener noreferrer" : undefined}
                     >
                       <div className={styles.cardThumb}>
                         <Image
@@ -268,6 +270,8 @@ export default function HomeHero() {
                 <Link
                   href={firstSlide.card.href}
                   className={styles.featureCard}
+                  target={firstSlide.card.href.startsWith("http") ? "_blank" : undefined}
+                  rel={firstSlide.card.href.startsWith("http") ? "noopener noreferrer" : undefined}
                 >
                   <div className={styles.cardThumb}>
                     <Image
