@@ -34,11 +34,17 @@ export default function Footer() {
   const currentYear = 2026;
 
   const spiritualStoreLinks = [
-    { label: "Rudraksha Malas & Beads", href: "https://www.yogiandyathra.com/products" },
-    { label: "Pure Copperware & Vessels", href: "https://www.yogiandyathra.com/products" },
-    { label: "Consecrated Yantras", href: "https://www.yogiandyathra.com/products" },
-    { label: "Meditation Cushions & Aids", href: "https://www.yogiandyathra.com/products" },
-    { label: "Flash Sale & Limited Editions", href: "https://www.yogiandyathra.com/products" },
+    { label: "Karungali Mala", href: "https://www.yogiandyathra.com/products/product?category=1" },
+    { label: "Karungali Bracelets", href: "https://www.yogiandyathra.com/products/product?category=2" },
+    { label: "Crystal Bracelets", href: "https://www.yogiandyathra.com/products/product?category=3" },
+    { label: "Crystal Mala", href: "https://www.yogiandyathra.com/products/product?category=4" },
+    { label: "Rudraksh Mala", href: "https://www.yogiandyathra.com/products/product?category=10" },
+    { label: "Rudraksh Bracelet", href: "https://www.yogiandyathra.com/products/product?category=6" },
+    { label: "Red Sandalwood Mala", href: "https://www.yogiandyathra.com/products/product?category=7" },
+    { label: "Devadharu Mala", href: "https://www.yogiandyathra.com/products/product?category=9" },
+    { label: "Thulasi Mala", href: "https://www.yogiandyathra.com/products/product?category=34" },
+    { label: "Evil Eye & Pendants", href: "https://www.yogiandyathra.com/products/product?category=12" },
+    { label: "Zodiac Crystal Bracelet", href: "https://www.yogiandyathra.com/products/product?category=30" },
   ];
 
   const workshopLinks = [
@@ -92,10 +98,14 @@ export default function Footer() {
           <div className={styles.footerGrid}>
             {/* Column 1 (Left Side): Brand Story & Social Media Icon */}
             <div className={styles.brandCol}>
-              <Link href="/#home" className={styles.logoLink}>
-                <span className={styles.logoText}>
-                  Yogi <span className={styles.logoAccent}>&</span> Yathra
-                </span>
+              <Link href="/#home" className={styles.logoLink} aria-label="Yogi & Yathra Home">
+                <Image
+                  src="/logo-02.png"
+                  alt="Yogi & Yathra"
+                  width={150}
+                  height={54}
+                  className={styles.logoImg}
+                />
               </Link>
               <p className={styles.brandTagline}>
                 Mindful Living · Sacred Yathra · Spiritual Store · Workshops

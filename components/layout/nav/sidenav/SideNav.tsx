@@ -2,6 +2,7 @@
 
 import React, { useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import {
   X,
   Home,
@@ -98,10 +99,15 @@ export default function SideNav({
               onClose();
             }}
             className={styles.logoLink}
+            aria-label="Yogi & Yathra Home"
           >
-            <span className={styles.logoText}>
-              Yogi<span className={styles.logoAccent}>&amp;</span>Yathra
-            </span>
+            <Image
+              src="/logo-01.png"
+              alt="Yogi & Yathra"
+              width={120}
+              height={42}
+              className={styles.logoImg}
+            />
           </Link>
 
           <button

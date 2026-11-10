@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Calendar, ShoppingBag } from "lucide-react";
 import styles from "./Navbar.module.scss";
@@ -47,6 +48,40 @@ function AirplaneIcon({ size = 15, className = "" }: { size?: number; className?
     </svg>
   );
 }
+
+export interface PillarItem {
+  label: string;
+  href: string;
+  iconColor: string;
+  icon: (size?: number) => React.ReactNode;
+}
+
+export const corePillars: PillarItem[] = [
+  {
+    label: "Workshop",
+    href: "https://www.yogiandyathra.com/",
+    iconColor: "#874429",
+    icon: (size = 14) => <MeditationIcon size={size} />,
+  },
+  {
+    label: "Spiritual Store",
+    href: "https://www.yogiandyathra.com/",
+    iconColor: "#7950f2",
+    icon: (size = 15) => <ShoppingBag size={size} strokeWidth={2.2} />,
+  },
+  {
+    label: "Events",
+    href: "https://www.yogiandyathra.com/",
+    iconColor: "#0ca678",
+    icon: (size = 15) => <Calendar size={size} strokeWidth={2.2} />,
+  },
+  {
+    label: "Travel",
+    href: "https://www.yogiandyathra.com/",
+    iconColor: "#ea580c",
+    icon: (size = 14) => <AirplaneIcon size={size} />,
+  },
+];
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -126,59 +161,40 @@ export default function Navbar() {
                   href="/#home"
                   onClick={(e) => handleNavClick(e, "home")}
                   className={styles.logoLink}
+                  aria-label="Yogi & Yathra Home"
                 >
-                  <span className={styles.logoText}>
-                    Yogi<span className={styles.logoAccent}>&amp;</span>Yathra
-                  </span>
+                  <Image
+                    src="/logo-01.png"
+                    alt="Yogi & Yathra"
+                    width={72}
+                    height={50}
+                    className={styles.logoImg}
+                    priority
+                  />
                 </Link>
               </div>
 
-              {/* Pillar Pills Capsule Container on the right side of the Logo Text (matching 2nd reference image) */}
+              {/* Pillar Pills Capsule Container on the right side of the Logo (Desktop View) */}
               <div
-                className={styles.pillsContainer}
+                className={`${styles.pillsContainer} ${styles.desktopPills}`}
                 role="region"
                 aria-label="Core Pillars"
               >
-                {/* 1. Workshop (active brown pill, display only) */}
-                <div
-                  className={`${styles.pillItem} ${styles.pillActive}`}
-                  aria-current="true"
-                >
-                  <span className={styles.pillIcon} style={{ color: "#ffffff" }}>
-                    <MeditationIcon size={14} />
-                  </span>
-                  <span className={styles.pillLabel}>Workshop</span>
-                </div>
-
-                {/* 2. Spiritual Store (links to https://www.yogiandyathra.com/) */}
-                <a
-                  href="https://www.yogiandyathra.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`${styles.pillItem} ${styles.pillLink}`}
-                  aria-label="Visit Yogi & Yathra Spiritual Store"
-                >
-                  <span className={styles.pillIcon} style={{ color: "#7950f2" }}>
-                    <ShoppingBag size={15} strokeWidth={2.2} />
-                  </span>
-                  <span className={styles.pillLabel}>Spiritual Store</span>
-                </a>
-
-                {/* 3. Events (display only) */}
-                <div className={styles.pillItem}>
-                  <span className={styles.pillIcon} style={{ color: "#0ca678" }}>
-                    <Calendar size={15} strokeWidth={2.2} />
-                  </span>
-                  <span className={styles.pillLabel}>Events</span>
-                </div>
-
-                {/* 4. Travel (display only) */}
-                <div className={styles.pillItem}>
-                  <span className={styles.pillIcon} style={{ color: "#ea580c" }}>
-                    <AirplaneIcon size={14} />
-                  </span>
-                  <span className={styles.pillLabel}>Travel</span>
-                </div>
+                {corePillars.map((item) => (
+                  <a
+                    key={item.label}
+                    href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={styles.pillItem}
+                    aria-label={`Visit ${item.label} on Yogi & Yathra`}
+                  >
+                    <span className={styles.pillIcon} style={{ color: item.iconColor }}>
+                      {item.icon()}
+                    </span>
+                    <span className={styles.pillLabel}>{item.label}</span>
+                  </a>
+                ))}
               </div>
             </div>
 
@@ -223,6 +239,39 @@ export default function Navbar() {
                   <span className={styles.toggleSpan1} />
                   <span className={styles.toggleSpan2} />
                 </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Responsive Sub-Nav Bar (Active on 1024px, 768px, 480px, 420px) */}
+        <div
+          className={styles.subNav}
+          role="navigation"
+          aria-label="Core Pillars Sub Navigation"
+        >
+          <div className="container">
+            <div className={styles.subNavInner}>
+              <div
+                className={`${styles.pillsContainer} ${styles.subNavPills}`}
+                role="region"
+                aria-label="Core Pillars"
+              >
+                {corePillars.map((item) => (
+                  <a
+                    key={`sub-${item.label}`}
+                    href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={styles.pillItem}
+                    aria-label={`Visit ${item.label} on Yogi & Yathra`}
+                  >
+                    <span className={styles.pillIcon} style={{ color: item.iconColor }}>
+                      {item.icon()}
+                    </span>
+                    <span className={styles.pillLabel}>{item.label}</span>
+                  </a>
+                ))}
               </div>
             </div>
           </div>

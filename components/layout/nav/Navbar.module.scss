@@ -49,6 +49,18 @@
   align-items: center;
 }
 
+.logoImg {
+  height: 48px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+
+  &:hover {
+    opacity: 0.9;
+  }
+}
+
 .logoText {
   font-size: 1.26rem;
   font-weight: 750;
@@ -85,40 +97,47 @@
   padding: 0 14px;
   border-radius: 999px;
   font-size: 0.83rem;
-  font-weight: 500;
+  font-weight: 420;
   text-decoration: none;
   background-color: #ffffff;
   color: #2b2f38;
   border: 1px solid #e5e9f0;
   white-space: nowrap;
   box-shadow: 0 1px 2px rgba(16, 24, 40, 0.04);
-  cursor: default;
+  cursor: pointer;
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+
+  &:hover {
+    color: var(--primaryColor);
+    border-color: #cbd5e1;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    transform: translateY(-1px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
 
   &.pillActive {
     background-color: var(--primaryColor);
     color: #ffffff;
     border-color: var(--primaryColor);
-    font-weight: 600;
+    font-weight: 480;
     box-shadow: 0 2px 6px rgba(135, 68, 41, 0.25);
 
-    .pillIcon {
-      color: #ffffff !important;
-    }
-  }
-
-  &.pillLink {
-    cursor: pointer;
-
     &:hover {
-      color: var(--primaryColor);
-      border-color: #cbd5e1;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+      background-color: var(--primaryHoverColor, #6d331e);
+      box-shadow: 0 3px 10px rgba(135, 68, 41, 0.35);
       transform: translateY(-1px);
+      color: #ffffff;
     }
 
     &:active {
       transform: translateY(0);
+    }
+
+    .pillIcon {
+      color: #ffffff !important;
     }
   }
 }
@@ -134,6 +153,39 @@
 .pillLabel {
   letter-spacing: -0.01em;
   line-height: 1;
+}
+
+// Desktop Pills visibility
+.desktopPills {
+  display: inline-flex;
+}
+
+// Responsive Sub Navigation Bar (Active on 1024px, 768px, 480px, 420px)
+.subNav {
+  display: none;
+  width: 100%;
+  background: inherit;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.subNavInner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-content: safe center;
+  width: 100%;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  padding: 2px 0;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.subNavPills {
+  flex-shrink: 0;
 }
 
 // Right Group: Navigation Links (left) + Toggle Menu Button (right)
@@ -307,38 +359,104 @@
     display: none;
   }
 
-  .pillsContainer {
+  .desktopPills {
     display: none;
   }
 
   .rightGroup {
     gap: 0;
   }
+
+  .navbarWrapper {
+    height: 68px;
+  }
+
+  .subNav {
+    display: block;
+    padding: 8px 0 10px;
+  }
+
+  .subNavInner {
+    justify-content: safe center;
+  }
 }
 
 @media (max-width: 768px) {
   .navbarWrapper {
-    height: 70px;
+    height: 64px;
+  }
+
+  .logoImg {
+    height: 42px;
   }
 
   .logoText {
     font-size: 1.18rem;
   }
+
+  .subNav {
+    padding: 7px 0 9px;
+  }
+
+  .subNavInner {
+    justify-content: safe center;
+  }
+
+  .pillItem {
+    height: 33px;
+    padding: 0 13px;
+    font-size: 0.81rem;
+    gap: 6px;
+  }
 }
 
 @media (max-width: 480px) {
   .navbarWrapper {
-    height: 66px;
+    height: 58px;
+  }
+
+  .logoImg {
+    height: 38px;
   }
 
   .logoText {
     font-size: 1.1rem;
   }
+
+  .subNav {
+    padding: 6px 0 8px;
+  }
+
+  .subNavInner {
+    justify-content: safe center;
+    padding: 2px 0;
+  }
+
+  .subNavPills {
+    padding: 3px;
+    gap: 4px;
+  }
+
+  .pillItem {
+    height: 31px;
+    padding: 0 10px;
+    font-size: 0.77rem;
+    gap: 5px;
+  }
+
+  .pillIcon svg {
+    width: 13px;
+    height: 13px;
+  }
 }
 
 @media (max-width: 420px) {
   .navbarWrapper {
-    height: 62px;
+    height: 54px;
+  }
+
+  .logoImg {
+    height: 34px;
   }
 
   .logoText {
@@ -349,5 +467,31 @@
     width: 38px;
     height: 38px;
     gap: 5px;
+  }
+
+  .subNav {
+    padding: 5px 0 7px;
+  }
+
+  .subNavInner {
+    justify-content: safe center;
+    padding: 2px 2px;
+  }
+
+  .subNavPills {
+    padding: 3px;
+    gap: 3px;
+  }
+
+  .pillItem {
+    height: 29px;
+    padding: 0 8px;
+    font-size: 0.73rem;
+    gap: 4px;
+  }
+
+  .pillIcon svg {
+    width: 12px;
+    height: 12px;
   }
 }

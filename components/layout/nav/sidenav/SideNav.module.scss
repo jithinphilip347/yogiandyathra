@@ -94,6 +94,13 @@
   align-items: center;
 }
 
+.logoImg {
+  height: 42px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+}
+
 .logoText {
   font-size: 1.25rem;
   font-weight: 750;
