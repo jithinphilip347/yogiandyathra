@@ -1,5 +1,6 @@
 // Footer.module.scss - Mindful Sanctuary Footer
 // Follows --font-inter from app/layout.tsx and colors from app/globals.scss
+// Strict responsive breakpoints: 1024px, 768px, 480px, 420px
 
 .footer {
   width: 100%;
@@ -21,12 +22,6 @@
   align-items: center;
   justify-content: space-between;
   gap: 1.5rem;
-
-  @media (max-width: 860px) {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 1.25rem;
-  }
 }
 
 .trustItem {
@@ -61,51 +56,23 @@
   width: 1px;
   height: 28px;
   background-color: rgba(255, 255, 255, 0.1);
-
-  @media (max-width: 860px) {
-    display: none;
-  }
 }
 
-// Main Multi-Column Content
+// Main Multi-Column Content (4 Columns: Brand, Spiritual Store, Workshop, Contact Us)
 .mainFooter {
   padding: 4.5rem 0 3.5rem;
-
-  @media (max-width: 768px) {
-    padding: 3.5rem 0 2.5rem;
-  }
 }
 
 .footerGrid {
   display: grid;
-  grid-template-columns: 1.6fr 1fr 1fr 1fr 1fr;
-  gap: 2.5rem;
-
-  @media (max-width: 1100px) {
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 2rem;
-  }
-
-  @media (max-width: 768px) {
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem 1.5rem;
-  }
-
-  @media (max-width: 520px) {
-    grid-template-columns: 1fr;
-    gap: 2.25rem;
-  }
+  grid-template-columns: 1.5fr 1fr 1fr 1.25fr;
+  gap: 2.75rem 2rem;
 }
 
-// Brand Column
+// Column 1: Brand Column
 .brandCol {
   display: flex;
   flex-direction: column;
-
-  @media (max-width: 1100px) {
-    grid-column: 1 / -1;
-    max-width: 600px;
-  }
 }
 
 .logoLink {
@@ -131,10 +98,11 @@
 .brandTagline {
   font-size: 0.72rem;
   font-weight: 700;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--secondaryColor);
   margin-bottom: 1rem;
+  line-height: 1.4;
 }
 
 .brandBio {
@@ -144,63 +112,33 @@
   margin-bottom: 1.5rem;
 }
 
-.contactList {
-  display: flex;
-  flex-direction: column;
-  gap: 0.65rem;
-  margin-bottom: 1.5rem;
-}
-
-.contactItem {
-  display: inline-flex;
-  align-items: flex-start;
-  gap: 0.65rem;
-  font-size: 0.84rem;
-  line-height: 1.5;
-  color: rgba(222, 217, 208, 0.78);
-  text-decoration: none;
-  transition: color 0.2s ease;
-
-  &:hover {
-    color: var(--secondaryColor);
-  }
-
-  span {
-    line-height: 1.5;
-  }
-}
-
-.contactIcon {
-  color: var(--secondaryColor);
-  flex-shrink: 0;
-  margin-top: 0.15rem;
-}
-
 .socialRow {
   display: flex;
   align-items: center;
   gap: 0.75rem;
+  margin-top: 0.25rem;
 }
 
 .socialLink {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 36px;
-  height: 36px;
+  width: 38px;
+  height: 38px;
   border-radius: 50%;
   background-color: rgba(255, 255, 255, 0.08);
   color: #ded9d0;
   text-decoration: none;
-  transition: background-color 0.25s ease, color 0.25s ease;
+  transition: background-color 0.25s ease, color 0.25s ease, transform 0.2s ease;
 
   &:hover {
     background-color: var(--primaryColor);
     color: #ffffff;
+    transform: translateY(-2px);
   }
 }
 
-// Link Columns
+// Columns 2 & 3: Link Columns (Spiritual Store, Workshop)
 .linkCol {
   display: flex;
   flex-direction: column;
@@ -249,6 +187,43 @@
   }
 }
 
+// Column 4: Contact Us Column
+.contactCol {
+  display: flex;
+  flex-direction: column;
+}
+
+.contactList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.contactItem {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  font-size: 0.85rem;
+  line-height: 1.55;
+  color: rgba(222, 217, 208, 0.78);
+  text-decoration: none;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: var(--secondaryColor);
+  }
+
+  span {
+    line-height: 1.55;
+  }
+}
+
+.contactIcon {
+  color: var(--secondaryColor);
+  flex-shrink: 0;
+  margin-top: 0.2rem;
+}
+
 // Bottom Legal & Developer Credits Bar
 .bottomBar {
   padding: 1.5rem 0;
@@ -261,12 +236,6 @@
   align-items: center;
   justify-content: space-between;
   gap: 1.5rem;
-
-  @media (max-width: 768px) {
-    flex-direction: column;
-    text-align: center;
-    gap: 1.15rem;
-  }
 }
 
 .copyrightCol {
@@ -274,19 +243,11 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
-
-  @media (max-width: 768px) {
-    justify-content: center;
-  }
 }
 
 .copyrightText {
   font-size: 0.78rem;
   color: rgba(222, 217, 208, 0.55);
-
-  @media (max-width: 420px) {
-    font-size: 0.74rem;
-  }
 }
 
 .legalLinks {
@@ -296,10 +257,6 @@
   justify-content: center;
   gap: 0.75rem;
   flex-wrap: wrap;
-
-  @media (max-width: 768px) {
-    justify-content: center;
-  }
 }
 
 .legalLink {
@@ -310,10 +267,6 @@
 
   &:hover {
     color: var(--secondaryColor);
-  }
-
-  @media (max-width: 420px) {
-    font-size: 0.74rem;
   }
 }
 
@@ -327,10 +280,6 @@
   display: flex;
   align-items: center;
   justify-content: flex-end;
-
-  @media (max-width: 768px) {
-    justify-content: center;
-  }
 }
 
 .developerLink {
@@ -352,10 +301,6 @@
 .developerText {
   font-size: 0.78rem;
   color: rgba(222, 217, 208, 0.55);
-
-  @media (max-width: 420px) {
-    font-size: 0.74rem;
-  }
 }
 
 .vatlLogo {
@@ -363,8 +308,85 @@
   width: auto;
   object-fit: contain;
   transition: transform 0.2s ease;
+}
 
-  @media (max-width: 420px) {
+// ============================================
+// RESPONSIVE BREAKPOINTS (STRICT REQUIREMENT)
+// ============================================
+
+@media (max-width: 1024px) {
+  .footerGrid {
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem 2rem;
+  }
+
+  .brandCol {
+    grid-column: 1 / -1;
+    max-width: 580px;
+  }
+}
+
+@media (max-width: 768px) {
+  .trustGrid {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.25rem;
+  }
+
+  .trustDivider {
+    display: none;
+  }
+
+  .mainFooter {
+    padding: 3.5rem 0 2.5rem;
+  }
+
+  .footerGrid {
+    grid-template-columns: 1fr 1fr;
+    gap: 2.25rem 1.5rem;
+  }
+
+  .brandCol {
+    grid-column: 1 / -1;
+    max-width: 100%;
+  }
+
+  .contactCol {
+    grid-column: 1 / -1;
+  }
+
+  .bottomWrapper {
+    flex-direction: column;
+    text-align: center;
+    gap: 1.15rem;
+  }
+
+  .copyrightCol,
+  .legalLinks,
+  .developerCol {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .footerGrid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 420px) {
+  .footerGrid {
+    gap: 1.75rem;
+  }
+
+  .copyrightText,
+  .legalLink,
+  .developerText {
+    font-size: 0.74rem;
+  }
+
+  .vatlLogo {
     height: 19px;
   }
 }

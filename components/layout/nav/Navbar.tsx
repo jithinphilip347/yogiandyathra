@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Plane, Calendar, ShoppingBag } from "lucide-react";
+import { Calendar, ShoppingBag } from "lucide-react";
 import styles from "./Navbar.module.scss";
 import SideNav, { NavItem } from "./sidenav/SideNav";
 
@@ -30,6 +30,20 @@ function MeditationIcon({ size = 15, className = "" }: { size?: number; classNam
     >
       <circle cx="12" cy="4" r="2.2" />
       <path d="M12 7.2c-1.1 0-2.1.8-2.3 1.9l-.2 1.6-2.5 1.5c-.5.3-.6 1-.3 1.5.3.5 1 .6 1.5.3l2.2-1.3v2.8l-3.3 1.9c-.5.3-.7.9-.4 1.4.3.5.9.7 1.4.4l3.1-1.8v1.6H7c-.6 0-1 .4-1 1s.4 1 1 1h10c.6 0 1-.4 1-1s-.4-1-1-1h-4.2v-1.6l3.1 1.8c.5.3 1.1.1 1.4-.4.3-.5.1-1.1-.4-1.4l-3.3-1.9v-2.8l2.2 1.3c.5.3 1.2.2 1.5-.3.3-.5.2-1.2-.3-1.5l-2.5-1.5-.2-1.6c-.2-1.1-1.2-1.9-2.3-1.9z" />
+    </svg>
+  );
+}
+
+function AirplaneIcon({ size = 15, className = "" }: { size?: number; className?: string }) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      className={className}
+    >
+      <path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z" />
     </svg>
   );
 }
@@ -119,7 +133,7 @@ export default function Navbar() {
                 </Link>
               </div>
 
-              {/* Pillar Pills Capsule Container on the right side of the Logo Text */}
+              {/* Pillar Pills Capsule Container on the right side of the Logo Text (matching 2nd reference image) */}
               <div
                 className={styles.pillsContainer}
                 role="region"
@@ -136,13 +150,19 @@ export default function Navbar() {
                   <span className={styles.pillLabel}>Workshop</span>
                 </div>
 
-                {/* 2. Travel (display only) */}
-                <div className={styles.pillItem}>
-                  <span className={styles.pillIcon} style={{ color: "#e05624" }}>
-                    <Plane size={15} strokeWidth={2.2} />
+                {/* 2. Spiritual Store (links to https://www.yogiandyathra.com/) */}
+                <a
+                  href="https://www.yogiandyathra.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`${styles.pillItem} ${styles.pillLink}`}
+                  aria-label="Visit Yogi & Yathra Spiritual Store"
+                >
+                  <span className={styles.pillIcon} style={{ color: "#7950f2" }}>
+                    <ShoppingBag size={15} strokeWidth={2.2} />
                   </span>
-                  <span className={styles.pillLabel}>Travel</span>
-                </div>
+                  <span className={styles.pillLabel}>Spiritual Store</span>
+                </a>
 
                 {/* 3. Events (display only) */}
                 <div className={styles.pillItem}>
@@ -152,19 +172,13 @@ export default function Navbar() {
                   <span className={styles.pillLabel}>Events</span>
                 </div>
 
-                {/* 4. E-Commerce (links to https://www.yogiandyathra.com/) */}
-                <a
-                  href="https://www.yogiandyathra.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`${styles.pillItem} ${styles.pillLink}`}
-                  aria-label="Visit Yogi & Yathra E-Commerce Store"
-                >
-                  <span className={styles.pillIcon} style={{ color: "#7950f2" }}>
-                    <ShoppingBag size={15} strokeWidth={2.2} />
+                {/* 4. Travel (display only) */}
+                <div className={styles.pillItem}>
+                  <span className={styles.pillIcon} style={{ color: "#ea580c" }}>
+                    <AirplaneIcon size={14} />
                   </span>
-                  <span className={styles.pillLabel}>E-Commerce</span>
-                </a>
+                  <span className={styles.pillLabel}>Travel</span>
+                </div>
               </div>
             </div>
 
