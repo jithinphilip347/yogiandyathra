@@ -1,12 +1,13 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, EffectFade } from "swiper/modules";
 import { ArrowRight, ArrowUpRight, Sparkles } from "lucide-react";
 import Button from "@/components/ui/button/Button";
+import type { FeaturedCourse, FeaturedProduct } from "@/lib/catalogueStore";
 
 import "swiper/css";
 import "swiper/css/effect-fade";
@@ -87,14 +88,56 @@ const slides: HeroSlide[] = [
   },
 ];
 
-export default function HomeHero() {
+export default function HomeHero({
+  featuredProducts = [],
+  featuredCourses = [],
+}: {
+  featuredProducts?: FeaturedProduct[];
+  featuredCourses?: FeaturedCourse[];
+}) {
   const [mounted, setMounted] = useState(false);
+  const [productIndex, setProductIndex] = useState(0);
+  const [courseIndex, setCourseIndex] = useState(0);
+  const lastSlideIndex = useRef(0);
+  const visitedSlides = useRef([true, false]);
 
   useEffect(() => {
     setMounted(true);
   }, []);
 
-  const firstSlide = slides[0];
+  const renderedSlides = slides.map((slide) => {
+    const product = featuredProducts[productIndex];
+    const course = featuredCourses[courseIndex];
+
+    if (slide.id === "ecommerce" && product) {
+      return {
+        ...slide,
+        card: {
+          ...slide.card,
+          title: product.title,
+          info: [product.category, product.price].filter(Boolean).join(" • "),
+          image: product.image,
+          href: product.href,
+        },
+      };
+    }
+
+    if (slide.id === "workshops" && course) {
+      return {
+        ...slide,
+        card: {
+          ...slide.card,
+          title: course.title,
+          info: [course.type, course.time].filter(Boolean).join(" • "),
+          image: course.image,
+          href: course.href,
+        },
+      };
+    }
+
+    return slide;
+  });
+  const firstSlide = renderedSlides[0];
 
   return (
     <section id="home" className={styles.heroSection} aria-label="Home Hero Banner">
@@ -109,9 +152,26 @@ export default function HomeHero() {
             delay: 6000,
             disableOnInteraction: false,
           }}
+          onSlideChange={(swiper) => {
+            const slideIndex = swiper.realIndex;
+            if (slideIndex === lastSlideIndex.current) return;
+
+            if (visitedSlides.current[slideIndex]) {
+              if (slideIndex === 0 && featuredProducts.length > 1) {
+                setProductIndex((index) => (index + 1) % featuredProducts.length);
+              }
+              if (slideIndex === 1 && featuredCourses.length > 1) {
+                setCourseIndex((index) => (index + 1) % featuredCourses.length);
+              }
+            } else {
+              visitedSlides.current[slideIndex] = true;
+            }
+
+            lastSlideIndex.current = slideIndex;
+          }}
           className={styles.swiper}
         >
-          {slides.map((slide, index) => (
+          {renderedSlides.map((slide, index) => (
             <SwiperSlide key={slide.id} className={styles.slide}>
               {/* Background Image */}
               <div className={styles.imageContainer}>
@@ -189,6 +249,7 @@ export default function HomeHero() {
                           src={slide.card.image}
                           alt={slide.card.title}
                           fill
+                          unoptimized
                           sizes="(max-width: 1200px) 340px, 380px"
                           className={styles.cardThumbImg}
                         />
@@ -278,6 +339,7 @@ export default function HomeHero() {
                       src={firstSlide.card.image}
                       alt={firstSlide.card.title}
                       fill
+                      unoptimized
                       sizes="(max-width: 1200px) 340px, 380px"
                       className={styles.cardThumbImg}
                     />

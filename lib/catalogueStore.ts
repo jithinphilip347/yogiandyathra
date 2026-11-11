@@ -31,6 +31,12 @@ export interface FeaturedCourse {
   href: string;
 }
 
+export interface FooterCategoryLink {
+  id: string;
+  label: string;
+  href: string;
+}
+
 const storeUrl = (process.env.YOGIYATRA_STORE_URL || "https://www.yogiandyathra.com").replace(/\/+$/, "");
 const workshopUrl = (process.env.YOGIFY_WORKSHOP_URL || "https://yogify.com").replace(/\/+$/, "");
 const productMediaUrl = (
@@ -79,6 +85,50 @@ function productSlug(value: string): string {
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/^-|-$/g, "");
+}
+
+function humanizeDuration(value: unknown): string {
+  if (typeof value === "number" && Number.isFinite(value)) {
+    return formatDurationMinutes(Math.round(value));
+  }
+
+  const raw = text(value).trim();
+  if (!raw) return "Self-paced";
+
+  const parts = raw.split(":").map((part) => Number(part));
+  if (parts.length === 2 && parts.every(Number.isFinite)) {
+    // Workshop course durations use MM:SS when stored in the two-part form.
+    const minutes = parts[0] + (parts[1] >= 30 ? 1 : 0);
+    return formatDurationMinutes(minutes);
+  }
+
+  if (parts.length === 3 && parts.every(Number.isFinite)) {
+    const totalMinutes = parts[0] * 60 + parts[1] + (parts[2] >= 30 ? 1 : 0);
+    return formatDurationMinutes(totalMinutes);
+  }
+
+  return raw;
+}
+
+function formatDurationMinutes(totalMinutes: number): string {
+  const minutes = Math.max(0, totalMinutes);
+  const hoursPart = Math.floor(minutes / 60);
+  const minutesPart = minutes % 60;
+  const units: string[] = [];
+
+  if (hoursPart > 0) units.push(`${hoursPart} hour${hoursPart === 1 ? "" : "s"}`);
+  if (minutesPart > 0 || units.length === 0) {
+    units.push(`${minutesPart} minute${minutesPart === 1 ? "" : "s"}`);
+  }
+
+  return units.join(" ");
+}
+
+function titleCase(value: unknown, fallback: string): string {
+  return text(value, fallback)
+    .trim()
+    .replace(/[_-]+/g, " ")
+    .replace(/\b\w/g, (letter) => letter.toUpperCase());
 }
 
 function absoluteMedia(value: unknown, base: string): string {
@@ -147,8 +197,8 @@ function featuredCourse(course: ApiRecord): FeaturedCourse {
       role: text(instructor.role, "Instructor"),
     },
     type: text(course.category_name ?? course.category, "Yoga"),
-    time: typeof duration === "number" ? `${duration} ${duration <= 90 ? "Mins" : "Hours"}` : text(duration, "Self-paced"),
-    level: text(course.level, "All Levels"),
+    time: humanizeDuration(duration),
+    level: titleCase(course.level, "All Levels"),
     price: money(course.discount_price ?? course.price),
     badge: course.featured ? "Featured" : undefined,
     href: `${workshopUrl}/courses/${encodeURIComponent(slug)}`,
@@ -161,16 +211,57 @@ export const catalogueStore = {
     const { data } = await yogiYatraApi.get<ApiList<ApiRecord> | ApiRecord>("/products-list", {
       // ProductController ranks its default catalogue by historical units sold.
       // is_combo=1 includes both regular products and combo products in that ranking.
-      params: { per_page: 4, page: 1, is_combo: 1 },
+      params: { per_page: 5, page: 1, is_combo: 1 },
     });
-    return records(data).slice(0, 4).map(featuredProduct);
+    return records(data).slice(0, 5).map(featuredProduct);
   },
 
   async featuredCourses(): Promise<FeaturedCourse[]> {
     const { data } = await yogifyWorkshopApi.get<ApiList<ApiRecord> | ApiRecord>("/home/courses", {
-      params: { per_page: 4, page: 1, sort: "created_at", order_by: "desc" },
+      params: { per_page: 5, page: 1, sort: "created_at", order_by: "desc" },
     });
-    return records(data).slice(0, 4).map(featuredCourse);
+    return records(data).slice(0, 5).map(featuredCourse);
+  },
+
+  async storeFooterCategories(): Promise<FooterCategoryLink[]> {
+    const { data } = await yogiYatraApi.get<ApiList<ApiRecord> | ApiRecord>("/categories", {
+      params: { per_page: 8, page: 1 },
+    });
+
+    return records(data)
+      .map((category) => {
+        const id = text(category.id);
+        const label = text(category.category_name ?? category.name);
+        return id && label
+          ? {
+              id,
+              label,
+              href: `${storeUrl}/products/product?category=${encodeURIComponent(id)}`,
+            }
+          : null;
+      })
+      .filter((category): category is FooterCategoryLink => category !== null)
+      .slice(0, 8);
+  },
+
+  async workshopFooterCategories(): Promise<FooterCategoryLink[]> {
+    const { data } = await yogifyWorkshopApi.get<ApiList<ApiRecord> | ApiRecord>("/home/categories");
+
+    return records(data)
+      .filter((category) => Number(category.courses_count ?? category.coursesCount ?? 0) > 0)
+      .map((category) => {
+        const id = text(category.id);
+        const label = text(category.name ?? category.title);
+        return id && label
+          ? {
+              id,
+              label,
+              href: `${workshopUrl}/course?category_id=${encodeURIComponent(id)}`,
+            }
+          : null;
+      })
+      .filter((category): category is FooterCategoryLink => category !== null)
+      .slice(0, 8);
   },
 };
 

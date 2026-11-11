@@ -31,7 +31,7 @@ export default async function Home() {
     <main>
       {/* 1. Grand Hero Entrance: Dual slide banner for Yogi & Yathra and Yogify */}
       <Suspense fallback={<div style={{ minHeight: "80vh" }} />}>
-        <HomeHero />
+        <HomeHero featuredProducts={products} featuredCourses={courses} />
       </Suspense>
 
       {/* 2. Highlights & Promo: Flash sale & latest live workshop */}

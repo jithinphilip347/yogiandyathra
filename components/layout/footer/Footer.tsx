@@ -9,6 +9,7 @@ import {
   Sparkles,
   Heart,
 } from "lucide-react";
+import { catalogueStore } from "@/lib/catalogueStore";
 import styles from "./Footer.module.scss";
 
 function InstagramIcon({ size = 18 }: { size?: number }) {
@@ -30,30 +31,21 @@ function InstagramIcon({ size = 18 }: { size?: number }) {
   );
 }
 
-export default function Footer() {
+export default async function Footer() {
   const currentYear = 2026;
+  const [storeResult, workshopResult] = await Promise.allSettled([
+    catalogueStore.storeFooterCategories(),
+    catalogueStore.workshopFooterCategories(),
+  ]);
+  const spiritualStoreLinks = storeResult.status === "fulfilled" ? storeResult.value : [];
+  const workshopLinks = workshopResult.status === "fulfilled" ? workshopResult.value : [];
 
-  const spiritualStoreLinks = [
-    { label: "Karungali Mala", href: "https://www.yogiandyathra.com/products/product?category=1" },
-    { label: "Karungali Bracelets", href: "https://www.yogiandyathra.com/products/product?category=2" },
-    { label: "Crystal Bracelets", href: "https://www.yogiandyathra.com/products/product?category=3" },
-    { label: "Crystal Mala", href: "https://www.yogiandyathra.com/products/product?category=4" },
-    { label: "Rudraksh Mala", href: "https://www.yogiandyathra.com/products/product?category=10" },
-    { label: "Rudraksh Bracelet", href: "https://www.yogiandyathra.com/products/product?category=6" },
-    { label: "Red Sandalwood Mala", href: "https://www.yogiandyathra.com/products/product?category=7" },
-    { label: "Devadharu Mala", href: "https://www.yogiandyathra.com/products/product?category=9" },
-    { label: "Thulasi Mala", href: "https://www.yogiandyathra.com/products/product?category=34" },
-    { label: "Evil Eye & Pendants", href: "https://www.yogiandyathra.com/products/product?category=12" },
-    { label: "Zodiac Crystal Bracelet", href: "https://www.yogiandyathra.com/products/product?category=30" },
-  ];
-
-  const workshopLinks = [
-    { label: "Still & Strong Vinyasa", href: "/#course" },
-    { label: "Prana & Breath Mastery", href: "/#course" },
-    { label: "Ashtanga Flow Series", href: "/#course" },
-    { label: "Restorative Yin & Sound", href: "/#course" },
-    { label: "Teacher Training Immersions", href: "/#course" },
-  ];
+  if (storeResult.status === "rejected") {
+    console.error("Unable to load YogiYatra footer categories", storeResult.reason);
+  }
+  if (workshopResult.status === "rejected") {
+    console.error("Unable to load Yogify footer categories", workshopResult.reason);
+  }
 
   return (
     <footer className={styles.footer} aria-label="Site Footer">
@@ -135,7 +127,7 @@ export default function Footer() {
               </h4>
               <ul className={styles.linkList}>
                 {spiritualStoreLinks.map((link) => (
-                  <li key={link.label}>
+                  <li key={link.id}>
                     <a
                       href={link.href}
                       target="_blank"
@@ -156,10 +148,10 @@ export default function Footer() {
               </h4>
               <ul className={styles.linkList}>
                 {workshopLinks.map((link) => (
-                  <li key={link.label}>
-                    <Link href={link.href} className={styles.footerLink}>
+                  <li key={link.id}>
+                    <a href={link.href} target="_blank" rel="noopener noreferrer" className={styles.footerLink}>
                       {link.label}
-                    </Link>
+                    </a>
                   </li>
                 ))}
               </ul>
