@@ -10,7 +10,7 @@ import HomeBlog from "@/components/home/homeblog/HomeBlog";
 import HomeNewsletter from "@/components/home/homenewsletter/HomeNewsletter";
 import { catalogueStore } from "@/lib/catalogueStore";
 
-export const revalidate = 3600;
+export const revalidate = 300;
 
 export default async function Home() {
   const [productResult, courseResult] = await Promise.allSettled([
