@@ -41,7 +41,7 @@ const productMediaUrl = (
 const workshopMediaUrl = (
   process.env.YOGIFY_WORKSHOP_IMAGE_BASE_URL ||
   process.env.YOGIFY_WORKSHOP_MEDIA_URL ||
-  "https://admin.varixialabs.com/workshopapi/public"
+  "https://admin.varixialabs.com/workshopapi/public/storage"
 ).replace(/\/+$/, "");
 
 function text(value: unknown, fallback = ""): string {
