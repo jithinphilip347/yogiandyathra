@@ -118,6 +118,7 @@ export default function ClassBox({
             src={image}
             alt={imageAlt || title}
             fill
+            unoptimized
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 380px"
             className={styles.cardImage}
           />
@@ -132,6 +133,7 @@ export default function ClassBox({
                 src={instructor.avatar}
                 alt={instructor.name}
                 fill
+                unoptimized
                 sizes="28px"
                 className={styles.avatarImage}
               />

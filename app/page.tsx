@@ -8,8 +8,22 @@ import HomeTestimonial from "@/components/home/hometestimonial/HomeTestimonial";
 import HomeFaq from "@/components/home/homefaq/HomeFaq";
 import HomeBlog from "@/components/home/homeblog/HomeBlog";
 import HomeNewsletter from "@/components/home/homenewsletter/HomeNewsletter";
+import { catalogueStore } from "@/lib/catalogueStore";
 
-export default function Home() {
+export const revalidate = 3600;
+
+export default async function Home() {
+  const [products, courses] = await Promise.all([
+    catalogueStore.featuredProducts().catch((error) => {
+      console.error("Unable to load featured YogiYatra products", error);
+      return [];
+    }),
+    catalogueStore.featuredCourses().catch((error) => {
+      console.error("Unable to load featured Yogify courses", error);
+      return [];
+    }),
+  ]);
+
   return (
     <main>
       {/* 1. Grand Hero Entrance: Dual slide banner for Yogi & Yathra and Yogify */}
@@ -21,10 +35,10 @@ export default function Home() {
       <HomeUpdate />
 
       {/* 3. Sacred Store Featured Products: 4-item grid with ProductBox */}
-      <HomeProduct />
+      <HomeProduct products={products} />
 
       {/* 4. Workshops & Masterclasses: 4-item grid with ClassBox */}
-      <HomeCourse />
+      <HomeCourse courses={courses} />
 
       {/* 5. Philosophy & Lineage: Vedic heritage, 3 core pillars, stats */}
       <HomeAbout />

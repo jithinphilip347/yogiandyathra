@@ -82,6 +82,7 @@ export default function ProductBox({
             src={image}
             alt={imageAlt || title}
             fill
+            unoptimized
             sizes="(max-width: 600px) 100vw, (max-width: 1100px) 50vw, 290px"
             className={styles.productImage}
           />

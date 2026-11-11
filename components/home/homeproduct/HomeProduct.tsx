@@ -11,61 +11,6 @@ export interface ProductItem extends ProductBoxProps {
   id: string;
 }
 
-const defaultProducts: ProductItem[] = [
-  {
-    id: "prod-1",
-    title: "5 Mukhi Sacred Rudraksha Mala",
-    category: "Sacred Malas",
-    price: "₹1,299",
-    originalPrice: "₹1,899",
-    discountBadge: "30% OFF",
-    rating: 5,
-    reviewsCount: 142,
-    image: "/images/banner/banner-1.webp",
-    badge: "Bestseller",
-    href: "https://www.yogiandyathra.com/products",
-  },
-  {
-    id: "prod-2",
-    title: "Gold Accented Rudraksha Bracelet",
-    category: "Spiritual Adornment",
-    price: "₹999",
-    originalPrice: "₹1,499",
-    discountBadge: "33% OFF",
-    rating: 5,
-    reviewsCount: 96,
-    image: "/images/products/rudraksha-bracelet.jpg",
-    badge: "Consecrated",
-    href: "https://www.yogiandyathra.com/products",
-  },
-  {
-    id: "prod-3",
-    title: "Pure Hammered Copper Tamra Carafe",
-    category: "Ayurvedic Living",
-    price: "₹1,599",
-    originalPrice: "₹2,299",
-    discountBadge: "30% OFF",
-    rating: 5,
-    reviewsCount: 78,
-    image: "https://images.unsplash.com/photo-1602928321679-560bb453f190?auto=format&fit=crop&w=800&q=80",
-    badge: "Handmade",
-    href: "https://www.yogiandyathra.com/products",
-  },
-  {
-    id: "prod-4",
-    title: "Consecrated Sri Yantra Meditation Plate",
-    category: "Sacred Yantras",
-    price: "₹1,899",
-    originalPrice: "₹2,599",
-    discountBadge: "25% OFF",
-    rating: 5,
-    reviewsCount: 114,
-    image: "https://images.unsplash.com/photo-1545205597-3d9d02c29597?auto=format&fit=crop&w=800&q=80",
-    badge: "Energized",
-    href: "https://www.yogiandyathra.com/products",
-  },
-];
-
 export interface HomeProductProps {
   eyebrow?: string;
   title?: string;
@@ -80,7 +25,7 @@ export default function HomeProduct({
   title = "Sacred Spiritual Essentials for *Mindful* Living",
   hookWord = "Mindful",
   description = "Consecrated Himalayan rudraksha beads, pure hammered copper vessels, and handcrafted meditation aids designed to anchor your daily practice.",
-  products = defaultProducts,
+  products = [],
   isLoading = false,
 }: HomeProductProps) {
   return (
