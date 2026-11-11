@@ -5,7 +5,7 @@ function apiBaseUrl(value: string | undefined, fallback: string): string {
 }
 
 export const yogiYatraApi = axios.create({
-  baseURL: apiBaseUrl(process.env.YOGIYATRA_API_BASE_URL, "https://admin.varixialabs.com/workshopapi/public/api/v1/ecommerce"),
+  baseURL: apiBaseUrl(process.env.YOGIYATRA_API_BASE_URL, "https://api.yogiandyathra.com/public/api"),
   timeout: 10_000,
   headers: { Accept: "application/json" },
 });

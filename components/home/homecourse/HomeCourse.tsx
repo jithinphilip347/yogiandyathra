@@ -4,6 +4,8 @@ import React from "react";
 import { motion } from "framer-motion";
 import SecHead from "@/components/boxes/sechead/SecHead";
 import ClassBox, { ClassBoxProps, ClassBoxSkeleton } from "@/components/boxes/classbox/ClassBox";
+import EmptyCatalogueState from "@/components/boxes/emptycatalogue/EmptyCatalogueState";
+import { CalendarDays } from "lucide-react";
 import { sectionFadeIn, staggerContainer, itemFadeUp } from "@/components/ui/animation/motionVariants";
 import styles from "./HomeCourse.module.scss";
 
@@ -18,6 +20,8 @@ export interface HomeCourseProps {
   description?: string;
   courses?: CourseData[];
   isLoading?: boolean;
+  hasLoadError?: boolean;
+  catalogueHref?: string;
 }
 
 export default function HomeCourse({
@@ -27,6 +31,8 @@ export default function HomeCourse({
   description = "Join immersive live sessions and self-paced journeys designed by master practitioners to elevate your mind, body, and breath.",
   courses = [],
   isLoading = false,
+  hasLoadError = false,
+  catalogueHref = "https://yogify.com/courses",
 }: HomeCourseProps) {
   return (
     <section id="course" className={styles.courseSection} aria-label="Featured Yoga Courses and Workshops">
@@ -46,7 +52,7 @@ export default function HomeCourse({
             align="space-between"
             action={{
               label: "Explore All Classes",
-              href: "/courses",
+              href: catalogueHref,
             }}
           />
         </motion.div>
@@ -63,7 +69,20 @@ export default function HomeCourse({
             ? Array.from({ length: 4 }).map((_, idx) => (
                 <ClassBoxSkeleton key={`skeleton-${idx}`} />
               ))
-            : courses.map((course) => (
+            : courses.length === 0 ? (
+              <div style={{ gridColumn: "1 / -1" }}>
+                <EmptyCatalogueState
+                  icon={<CalendarDays size={24} strokeWidth={1.6} />}
+                  eyebrow="Yogify Workshops"
+                  title={hasLoadError ? "Classes are taking a moment" : "The next class is being prepared"}
+                  description={hasLoadError
+                    ? "We could not load the workshop schedule just now. Please check back or browse all classes."
+                    : "There are no featured classes to show right now. Explore the workshop catalogue for the latest sessions."}
+                  actionLabel="Browse classes"
+                  actionHref={catalogueHref}
+                />
+              </div>
+            ) : courses.map((course) => (
                 <motion.div key={course.id} variants={itemFadeUp} style={{ width: "100%" }}>
                   <ClassBox
                     title={course.title}

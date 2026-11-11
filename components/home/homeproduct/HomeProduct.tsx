@@ -4,6 +4,8 @@ import React from "react";
 import { motion } from "framer-motion";
 import SecHead from "@/components/boxes/sechead/SecHead";
 import ProductBox, { ProductBoxProps, ProductBoxSkeleton } from "@/components/boxes/productbox/ProductBox";
+import EmptyCatalogueState from "@/components/boxes/emptycatalogue/EmptyCatalogueState";
+import { PackageSearch } from "lucide-react";
 import { sectionFadeIn, staggerContainer, itemFadeUp } from "@/components/ui/animation/motionVariants";
 import styles from "./HomeProduct.module.scss";
 
@@ -18,6 +20,7 @@ export interface HomeProductProps {
   description?: string;
   products?: ProductItem[];
   isLoading?: boolean;
+  hasLoadError?: boolean;
 }
 
 export default function HomeProduct({
@@ -27,6 +30,7 @@ export default function HomeProduct({
   description = "Consecrated Himalayan rudraksha beads, pure hammered copper vessels, and handcrafted meditation aids designed to anchor your daily practice.",
   products = [],
   isLoading = false,
+  hasLoadError = false,
 }: HomeProductProps) {
   return (
     <section id="product" className={styles.productSection} aria-label="Featured Sacred Products">
@@ -63,7 +67,20 @@ export default function HomeProduct({
             ? Array.from({ length: 4 }).map((_, idx) => (
                 <ProductBoxSkeleton key={`skeleton-${idx}`} />
               ))
-            : products.map((item) => (
+            : products.length === 0 ? (
+              <div style={{ gridColumn: "1 / -1" }}>
+                <EmptyCatalogueState
+                  icon={<PackageSearch size={24} strokeWidth={1.6} />}
+                  eyebrow="Yogi & Yathra Store"
+                  title={hasLoadError ? "Our collection is taking a moment" : "A new collection is on its way"}
+                  description={hasLoadError
+                    ? "We could not load the products just now. Please try the store while we reconnect."
+                    : "There are no featured products to show at the moment. Visit the store to browse the full collection."}
+                  actionLabel="Visit the store"
+                  actionHref="https://www.yogiandyathra.com/products"
+                />
+              </div>
+            ) : products.map((item) => (
                 <motion.div key={item.id} variants={itemFadeUp} style={{ width: "100%" }}>
                   <ProductBox
                     title={item.title}

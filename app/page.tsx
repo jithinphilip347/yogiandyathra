@@ -13,16 +13,19 @@ import { catalogueStore } from "@/lib/catalogueStore";
 export const revalidate = 3600;
 
 export default async function Home() {
-  const [products, courses] = await Promise.all([
-    catalogueStore.featuredProducts().catch((error) => {
-      console.error("Unable to load featured YogiYatra products", error);
-      return [];
-    }),
-    catalogueStore.featuredCourses().catch((error) => {
-      console.error("Unable to load featured Yogify courses", error);
-      return [];
-    }),
+  const [productResult, courseResult] = await Promise.allSettled([
+    catalogueStore.featuredProducts(),
+    catalogueStore.featuredCourses(),
   ]);
+  const products = productResult.status === "fulfilled" ? productResult.value : [];
+  const courses = courseResult.status === "fulfilled" ? courseResult.value : [];
+
+  if (productResult.status === "rejected") {
+    console.error("Unable to load featured YogiYatra products", productResult.reason);
+  }
+  if (courseResult.status === "rejected") {
+    console.error("Unable to load featured Yogify courses", courseResult.reason);
+  }
 
   return (
     <main>
@@ -35,10 +38,14 @@ export default async function Home() {
       <HomeUpdate />
 
       {/* 3. Sacred Store Featured Products: 4-item grid with ProductBox */}
-      <HomeProduct products={products} />
+      <HomeProduct products={products} hasLoadError={productResult.status === "rejected"} />
 
       {/* 4. Workshops & Masterclasses: 4-item grid with ClassBox */}
-      <HomeCourse courses={courses} />
+      <HomeCourse
+        courses={courses}
+        hasLoadError={courseResult.status === "rejected"}
+        catalogueHref={`${(process.env.YOGIFY_WORKSHOP_URL || "https://yogify.com").replace(/\/+$/, "")}/courses`}
+      />
 
       {/* 5. Philosophy & Lineage: Vedic heritage, 3 core pillars, stats */}
       <HomeAbout />

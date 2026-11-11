@@ -33,8 +33,16 @@ export interface FeaturedCourse {
 
 const storeUrl = (process.env.YOGIYATRA_STORE_URL || "https://www.yogiandyathra.com").replace(/\/+$/, "");
 const workshopUrl = (process.env.YOGIFY_WORKSHOP_URL || "https://yogify.com").replace(/\/+$/, "");
-const productMediaUrl = (process.env.YOGIYATRA_MEDIA_URL || "https://api.yogiandyathra.com/public/storage").replace(/\/+$/, "");
-const workshopMediaUrl = (process.env.YOGIFY_WORKSHOP_MEDIA_URL || "https://admin.varixialabs.com/workshopapi/public").replace(/\/+$/, "");
+const productMediaUrl = (
+  process.env.YOGIYATRA_IMAGE_BASE_URL ||
+  process.env.YOGIYATRA_MEDIA_URL ||
+  "https://api.yogiandyathra.com/public/storage"
+).replace(/\/+$/, "");
+const workshopMediaUrl = (
+  process.env.YOGIFY_WORKSHOP_IMAGE_BASE_URL ||
+  process.env.YOGIFY_WORKSHOP_MEDIA_URL ||
+  "https://admin.varixialabs.com/workshopapi/public"
+).replace(/\/+$/, "");
 
 function text(value: unknown, fallback = ""): string {
   return value == null || value === "" ? fallback : String(value);
@@ -54,6 +62,25 @@ function money(value: unknown): string | undefined {
     : text(value);
 }
 
+function objectValue(value: unknown): ApiRecord | undefined {
+  return value && typeof value === "object" && !Array.isArray(value)
+    ? value as ApiRecord
+    : undefined;
+}
+
+function firstMediaPath(value: unknown): unknown {
+  if (!Array.isArray(value)) return undefined;
+  return objectValue(value[0])?.file_path;
+}
+
+function productSlug(value: string): string {
+  return value
+    .normalize("NFKD")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
+}
+
 function absoluteMedia(value: unknown, base: string): string {
   const path = text(value);
   if (!path) return "/images/products/rudraksha-bracelet.jpg";
@@ -69,25 +96,38 @@ function absoluteMedia(value: unknown, base: string): string {
 function featuredProduct(product: ApiRecord): FeaturedProduct {
   const id = text(product.id ?? product.product_id, "product");
   const name = text(product.product_name ?? product.name ?? product.title, "Sacred product");
-  const price = product.discount_price ?? product.sale_price ?? product.price;
-  const original = product.original_price ?? product.mrp ?? product.regular_price;
-  const imagePath = product.image ?? product.image_url ?? product.product_image ?? product.thumbnail;
-  const productUrl = text(product.slug ?? id);
+  const price = product.discount_price ?? product.sale_price ?? product.combo_price ?? product.price;
+  const original = product.original_price ?? product.mrp ?? product.regular_price ?? product.price;
+  const firstComboProduct = Array.isArray(product.products) ? objectValue(product.products[0]) : undefined;
+  const imagePath = product.image ?? product.image_url ?? product.product_image ?? product.thumbnail ??
+    firstMediaPath(product.media) ?? product.image_path ?? product.varient_image_path ??
+    firstMediaPath(firstComboProduct?.media);
+  const productUrl = text(product.slug, productSlug(name));
   const rating = Number(product.rating ?? product.average_rating ?? 0);
+  const category = objectValue(product.category);
+  const comboCategory = objectValue(firstComboProduct?.category);
+  const categoryName = text(
+    product.category_name ?? category?.category_name ?? category?.name ??
+      comboCategory?.category_name ?? comboCategory?.name,
+  );
+  const currentPrice = Number(price);
+  const originalPrice = Number(original);
   return {
     id,
     title: name,
-    category: text(product.category_name ?? product.category, "Sacred Collection"),
+    category: categoryName,
     price: money(price) ?? "Price unavailable",
-    originalPrice: original && Number(original) > Number(price) ? money(original) : undefined,
-    discountBadge: original && Number(original) > Number(price) && Number(original) > 0
-      ? `${Math.round((1 - Number(price) / Number(original)) * 100)}% OFF`
+    originalPrice: Number.isFinite(originalPrice) && originalPrice > currentPrice ? money(original) : undefined,
+    discountBadge: Number.isFinite(originalPrice) && originalPrice > currentPrice && originalPrice > 0
+      ? `${Math.round((1 - currentPrice / originalPrice) * 100)}% OFF`
       : undefined,
     rating: Math.max(0, Math.min(5, Number.isFinite(rating) ? Math.round(rating) : 0)),
     reviewsCount: Number(product.reviews_count ?? product.total_reviews ?? 0) || 0,
     image: absoluteMedia(imagePath, productMediaUrl),
-    badge: product.badge ? text(product.badge) : undefined,
-    href: `${storeUrl}/products/${encodeURIComponent(productUrl)}`,
+    badge: "Bestseller",
+    href: product.is_combo
+      ? `${storeUrl}/combo/${encodeURIComponent(productUrl)}/${encodeURIComponent(id)}`
+      : `${storeUrl}/products/${encodeURIComponent(productUrl)}/${encodeURIComponent(id)}`,
   };
 }
 
@@ -118,8 +158,10 @@ function featuredCourse(course: ApiRecord): FeaturedCourse {
 /** Server-side catalogue store. Results are cached by Next.js ISR at the page boundary. */
 export const catalogueStore = {
   async featuredProducts(): Promise<FeaturedProduct[]> {
-    const { data } = await yogiYatraApi.get<ApiList<ApiRecord> | ApiRecord>("/products", {
-      params: { per_page: 4, page: 1 },
+    const { data } = await yogiYatraApi.get<ApiList<ApiRecord> | ApiRecord>("/products-list", {
+      // ProductController ranks its default catalogue by historical units sold.
+      // is_combo=1 includes both regular products and combo products in that ranking.
+      params: { per_page: 4, page: 1, is_combo: 1 },
     });
     return records(data).slice(0, 4).map(featuredProduct);
   },

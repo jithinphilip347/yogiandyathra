@@ -10,7 +10,7 @@ import styles from "./ProductBox.module.scss";
 export interface ProductBoxProps {
   id?: string;
   title: string;
-  category: string;
+  category?: string;
   price: string;
   originalPrice?: string;
   discountBadge?: string;
@@ -50,7 +50,7 @@ export function ProductBoxSkeleton({ className = "" }: { className?: string }) {
 
 export default function ProductBox({
   title = "5 Mukhi Sacred Rudraksha Mala",
-  category = "Sacred Malas",
+  category,
   price = "₹1,299",
   originalPrice = "₹1,899",
   discountBadge = "30% OFF",
@@ -58,7 +58,7 @@ export default function ProductBox({
   reviewsCount = 142,
   image = "/images/banner/banner-1.webp",
   imageAlt,
-  badge = "Bestseller",
+  badge,
   href = "https://www.yogiandyathra.com/products",
   className = "",
   isLoading = false,
@@ -94,7 +94,7 @@ export default function ProductBox({
 
       {/* Content Section */}
       <div className={styles.content}>
-        <span className={styles.category}>{category}</span>
+        {category && <span className={styles.category}>{category}</span>}
 
         <h3 className={styles.title}>
           <Link
@@ -108,21 +108,21 @@ export default function ProductBox({
         </h3>
 
         {/* Rating and Reviews */}
-        <div className={styles.ratingRow}>
-          <div className={styles.stars} aria-label={`Rating: ${rating} out of 5 stars`}>
-            {Array.from({ length: 5 }).map((_, idx) => (
-              <Star
-                key={idx}
-                size={12}
-                className={idx < rating ? styles.starFilled : styles.starEmpty}
-                fill="currentColor"
-              />
-            ))}
-          </div>
-          {reviewsCount && (
+        {reviewsCount > 0 && rating > 0 && (
+          <div className={styles.ratingRow}>
+            <div className={styles.stars} aria-label={`Rating: ${rating} out of 5 stars`}>
+              {Array.from({ length: 5 }).map((_, idx) => (
+                <Star
+                  key={idx}
+                  size={12}
+                  className={idx < rating ? styles.starFilled : styles.starEmpty}
+                  fill="currentColor"
+                />
+              ))}
+            </div>
             <span className={styles.reviewsCount}>({reviewsCount})</span>
-          )}
-        </div>
+          </div>
+        )}
 
         {/* Price Section */}
         <div className={styles.footerRow}>
