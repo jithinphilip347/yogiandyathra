@@ -37,17 +37,17 @@ export interface FooterCategoryLink {
   href: string;
 }
 
-const storeUrl = (process.env.YOGIYATRA_STORE_URL || "https://www.yogiandyathra.com").replace(/\/+$/, "");
-const workshopUrl = (process.env.YOGIFY_WORKSHOP_URL || "https://yogify.com").replace(/\/+$/, "");
+const storeUrl = (process.env.YOGIYATRA_STORE_URL || "https://yogify-opal.vercel.app").replace(/\/+$/, "");
+const workshopUrl = (process.env.YOGIFY_WORKSHOP_URL || "https://workshop-seven-orcin.vercel.app").replace(/\/+$/, "");
 const productMediaUrl = (
   process.env.YOGIYATRA_IMAGE_BASE_URL ||
   process.env.YOGIYATRA_MEDIA_URL ||
-  "https://api.yogiandyathra.com/public/storage"
+  "https://apis.stagging.varixialabs.com/ecommerce/storage"
 ).replace(/\/+$/, "");
 const workshopMediaUrl = (
   process.env.YOGIFY_WORKSHOP_IMAGE_BASE_URL ||
   process.env.YOGIFY_WORKSHOP_MEDIA_URL ||
-  "https://admin.varixialabs.com/workshopapi/public/storage"
+  "https://apis.stagging.varixialabs.com/workshopapi/storage"
 ).replace(/\/+$/, "");
 
 function text(value: unknown, fallback = ""): string {

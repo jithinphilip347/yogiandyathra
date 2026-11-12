@@ -5,13 +5,13 @@ function apiBaseUrl(value: string | undefined, fallback: string): string {
 }
 
 export const yogiYatraApi = axios.create({
-  baseURL: apiBaseUrl(process.env.YOGIYATRA_API_BASE_URL, "https://api.yogiandyathra.com/public/api"),
+  baseURL: apiBaseUrl(process.env.YOGIYATRA_API_BASE_URL, "https://apis.stagging.varixialabs.com/ecommerce/api"),
   timeout: 10_000,
   headers: { Accept: "application/json" },
 });
 
 export const yogifyWorkshopApi = axios.create({
-  baseURL: apiBaseUrl(process.env.YOGIFY_WORKSHOP_API_BASE_URL, "https://admin.varixialabs.com/workshopapi/public/api/v1"),
+  baseURL: apiBaseUrl(process.env.YOGIFY_WORKSHOP_API_BASE_URL, "https://apis.stagging.varixialabs.com/workshopapi/api/v1"),
   timeout: 10_000,
   headers: { Accept: "application/json" },
 });

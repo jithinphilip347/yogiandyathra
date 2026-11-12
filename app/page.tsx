@@ -44,7 +44,7 @@ export default async function Home() {
       <HomeCourse
         courses={courses}
         hasLoadError={courseResult.status === "rejected"}
-        catalogueHref={`${(process.env.YOGIFY_WORKSHOP_URL || "https://yogify.com").replace(/\/+$/, "")}/courses`}
+        catalogueHref={`${(process.env.YOGIFY_WORKSHOP_URL || "https://workshop-seven-orcin.vercel.app").replace(/\/+$/, "")}/courses`}
       />
 
       {/* 5. Philosophy & Lineage: Vedic heritage, 3 core pillars, stats */}
