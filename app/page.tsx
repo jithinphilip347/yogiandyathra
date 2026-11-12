@@ -38,7 +38,7 @@ export default async function Home() {
       <HomeUpdate />
 
       {/* 3. Sacred Store Featured Products: 4-item grid with ProductBox */}
-      <HomeProduct products={products} hasLoadError={productResult.status === "rejected"} />
+      <HomeProduct products={products.slice(0, 4)} hasLoadError={productResult.status === "rejected"} />
 
       {/* 4. Workshops & Masterclasses: 4-item grid with ClassBox */}
       <HomeCourse
